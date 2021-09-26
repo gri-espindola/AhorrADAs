@@ -29,7 +29,7 @@
               </a> -->
             </div>
           
-            <div id="navbarBasicExample" class="navbar-menu">
+            <div id="" class="navbar-menu">
               <div class="navbar-end">
                 <a class="navbar-item">
                     <i class="fas fa-chart-line mr-2"></i> 
@@ -53,33 +53,49 @@
 
         <section class="columns is-centered mt-6">
             <div class="column is-3">
-                <div class="">
-                    <div class="box">
-                        <h2 class="">Balance</h2>
-                            <div class=""> 
-                                <h3 class="column is-size-5">Ganacias</h3>
-                                <p class="">+$0</p>
-                            </div>
-                            <div class="">
-                                <h3 class="">Gastos</h3>
-                                <p class="">-$0</p>
-                            </div>
-                            <div class="">
-                                <h3 class="column is-size-4">Total</h3>
-                                <p class="">$0</p>
-                            </div>
-                    </div>
-                    <div class="box">
-                        <div class="">
-                            <div class="">
-                                <h3 class="is-size-4 has-text-weight-bold">Filtros</h3>
-                            </div>
-                            <div class="">
-                                <button >Ocultar filtros</button>
-                            </div> 
+                <div class="box">
+                    <h2 class="title has-text-weight-bold">Balance</h2>
+                    <!-- column ganancias -->
+                        <div class="columns"> 
+                            <h3 class="column is-5 is-size-5">Ganacias</h3>                                <p class="column is-5 is-offset-2 has-text-right has-text-success mt-1">+$0</p>
                         </div>
-                    </div>    
-                </div>
+                    <!-- column gastos -->
+                        <div class="columns">
+                            <h3 class="column is-5 is-size-5">Gastos</h3>
+                            <p class="column is-5 is-offset-2 has-text-right has-text-danger mt-1">-$0</p>
+                        </div>
+                    <!-- column total -->
+                        <div class="columns">
+                            <h3 class="column is-5 is-size-4">Total</h3>
+                            <p class="column is-5 is-offset-2 has-text-right has-text-weight-bold mt-1">$0</p>
+                        </div>
+                    </div>
+                <div class="box">
+                    <div class="columns">
+                        <h3 class="column is-5 is-size-4 has-text-weight-bold">Filtros</h3>
+                        <button class="column is-5 has-text-right">Ocultar filtros</button>
+                    </div>
+                    <div class="">
+                        <label for="">Tipo</label>
+                        <select name="" id="">
+                            <option value="">Todos</option>
+                            <option value="">Gasto</option>
+                            <option value="">Ganancia</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="">Categoría</label>
+                        <select name="" id="">
+                            <option value="">Comida</option>
+                            <option value="">Servicios</option>
+                            <option value="">Salidas</option>
+                            <option value="">Educación</option>
+                            <option value="">Transporte</option>
+                            <option value="">Trabajo</option>
+
+                        </select>
+                    </div> 
+                </div>    
             </div>     
 
             <div class="box column is-6 mt-3">
