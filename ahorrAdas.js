@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 //guardando cambios de la rama para crear funcionalidades para las secciones que me permitan cambiarme de modal entre categoria, balance y reporte
 
 //DOM
@@ -41,4 +40,3 @@ botonReportes.addEventListener('click', () =>{
     seccionCategorias.style.display = 'none'
     
 });
->>>>>>> 14ebd1f2df76bc1adf0d0f01f67daa45ef9294e9
