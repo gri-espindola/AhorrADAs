@@ -21,27 +21,21 @@
                         <i class="fas fa-wallet mr-2"></i>
                         AhorrADAs</h1>
                 </a>
-            
-                <!-- <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a> -->
                 </div>
             
-                <div id="" class="navbar-menu">
+                <div class="navbar-menu">
                 <div class="navbar-end">
-                    <a class="navbar-item">
+                    <a class="navbar-item" id="boton-balance">
                         <i class="fas fa-chart-line mr-2"></i> 
                         Balance
                     </a>
             
-                    <a class="navbar-item">
+                    <a class="navbar-item" id="boton-categorias">
                         <i class="fas fa-tag mr-2"></i>
                         Categorías
                     </a>
             
-                    <a class="navbar-item">
+                    <a class="navbar-item" id="boton-reportes">
                         <i class="fas fa-chart-pie mr-2"></i>
                         Reportes
                     </a>
@@ -51,8 +45,8 @@
 
     <!--*******************SECCION BALANCE/FILTROS/OPERACIONES************************-->
         
-        <div class="is-hidden"> <!-- Por el momento hasta maquetar las otras pestañas -->
-            <section class="columns is-centered mt-6">
+        <div class=""> <!-- Por el momento hasta maquetar las otras pestañas -->
+            <section class="columns is-centered mt-6" id="seccion-balance">
                 <div class="column is-3">
 
     <!--********************************* BOX BALANCE ***********************************-->
@@ -159,7 +153,7 @@
         
 
 <!--************************************ SECCIÓN CATEGORIAS **********************************-->
-        <section class="columns section vista">
+        <section class="columns section vista" id="seccion-categorias">
             <div class="container column is-8 box is-centered mt-5">
                 <h1 class="title is-size-2 has-text-weight-bold">Categorías</h1>
                     <div class="field">
@@ -218,17 +212,17 @@
     </div>
 
     <!--************************************ SECCIÓN REPORTES ********************************-->
-        <section class="columns section vista">
+        <section class="columns section vista" id="seccion-reportes">
             <div class="container column is-6 is-centered mt-5 box">
                 <h1 class="title is-size-2 p-2 has-text-weight-bold">Reportes</h1>
-                <div class="columns">
-                    <figure class="image is-vcentered column is-8">
+                <div class="columns is-centered">
+                    <figure class="image column is-8">
                         <img src="https://frontend-proyecto-ahorradas.adaitw.org/imgs/chart.svg" class="alt" alt="">
                     </figure>
                 </div>
-                <div class="">
-                    <h2 class="title is-size-4 is-centered">Operaciones insuficientes</h2>
-                    <p class="is-centered">Prueba agregando más operaciones</p>
+                <div class="is-centered">
+                    <h2 class="title is-size-4">Operaciones insuficientes</h2>
+                    <p class="">Prueba agregando más operaciones</p>
                 </div>
             </div>
         </section>
