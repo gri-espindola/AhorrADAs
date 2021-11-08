@@ -12,6 +12,12 @@ const seccionCategorias = document.querySelector("#seccion-categorias")
 const seccionBalance = document.querySelector("#seccion-balance")
 const seccionReportes = document.querySelector("#seccion-reportes")
 
+//BOTON DE MODALES
+const agregarNuevaOperacion = document.querySelector("#agregar-nueva-operacion")
+
+// MODALES
+const modalNuevaOperacion = document.querySelector("#modal-nueva-operacion")
+
 //Darle a las 3 display flex
     seccionCategorias.style.display = 'none'
     seccionBalance.style.display = 'flex'
@@ -22,7 +28,7 @@ botonCategorias.addEventListener('click', () =>{
     seccionCategorias.style.display = 'flex'
     seccionBalance.style.display = 'none'
     seccionReportes.style.display = 'none'
-    
+    modalNuevaOperacion.style.display = 'none'
 });
 
 
@@ -30,7 +36,7 @@ botonBalance.addEventListener('click', () =>{
     seccionBalance.style.display = 'flex'
     seccionCategorias.style.display = 'none'
     seccionReportes.style.display = 'none'
-    
+    modalNuevaOperacion.style.display = 'none'
 });
 
 
@@ -38,5 +44,14 @@ botonReportes.addEventListener('click', () =>{
     seccionReportes.style.display = 'flex'
     seccionBalance.style.display = 'none'
     seccionCategorias.style.display = 'none'
-    
+    modalNuevaOperacion.style.display = 'none'
 });
+
+//NUEVA OPERACION
+
+modalNuevaOperacion.style.display = 'none'
+
+agregarNuevaOperacion.addEventListener('click', () =>{
+    modalNuevaOperacion.style.display = 'flex'
+    seccionBalance.style.display = 'none'
+})

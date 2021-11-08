@@ -137,7 +137,7 @@
                             <h3 class="is-size-4 has-text-weight-bold">Operaciones</h3>
                         </div>
                         <div class="column has-text-right-tablet">
-                            <button type="button" class="button is-primary" id="ver-operacion">+ Nueva operación</button>
+                            <button type="button" class="button is-primary" id="agregar-nueva-operacion">+ Nueva operación</button>
                         </div>
                     </div>
 
@@ -155,30 +155,34 @@
 
             <!--*************** MODAL "Nueva operacion" *******************-->
 
-            <section class="columns is-centered mt-6">
+            <section class="columns is-centered mt-6" id="modal-nueva-operacion">
                 <div class="box column is-7">
-                    <div class="">
-                        <div>
+                    <div class="column is-offset-desktop">
+                        <div class="mb-3">
                             <h1 class="tittle is-size-2 has-text-weight-bold">Nueva operación</h1>
                         </div>
-                        <div>
+                        <div class="mb-3">
                             <label class="label">Descripción</label>    
                             <input type="text" class="input">
                         </div>
-                        <div>
+                        <div class="mb-3">
                             <label for="" class="label">Monto</label>
                             <input type="text" class="input">
                         </div>
-                        <div>
+                        <div class="mb-3">
                             <label for="" class="label">Tipo</label>
-                            <select name="" id="" class="select is-fullwidth">
+                        </div>
+                        <div class="select is-fullwidth mb-3">
+                            <select name="" id="" class="">
                                 <option value="">Gasto</option>
                                 <option value="">Ganancias</option>
                             </select>
                         </div>
-                        <div>
+                        <div class="mb-3">
                             <label for="" class="label">Categoría</label>
-                                <select name="" id="" class="select is-fullwidth">
+                        </div>
+                        <div class="select is-fullwidth mb-3">
+                            <select name="" id="">
                                     <option value="">Comida</option>
                                     <option value="">Servicios</option>
                                     <option value="">Salidas</option>
@@ -187,13 +191,15 @@
                                     <option value="">Trabajo</option>
                                 </select>
                         </div>
-                        <div>
+                        <div class="mb-3">
                             <label for="" class="label">Fecha</label>
-                            <input type="date" class="column is-fullwidth">
                         </div>
-                        <div class="navbar-end">
+                        <div>
+                            <input type="date" class="input is-fullwidth">
+                        </div>
+                        <div class="navbar-end mt-6">
                             <button class="button is-light">Cancelar</button>
-                            <button class="button is-success">Agregar</button>
+                            <button class="button is-success ml-2">Agregar</button>
                         </div>
                     </div>        
                 </div>    
