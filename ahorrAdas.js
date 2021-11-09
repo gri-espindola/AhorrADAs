@@ -30,6 +30,14 @@ const selectCategoria = document.querySelector("#select-categoria")
     const trabajo = document.querySelector("#trabajo")
     const fecha = document.querySelector("#fecha")
 
+//SECCION CATEGORIAS
+const editarEliminarComida=document.querySelector("#comida-edit-remove")
+const editarEliminarServicios=document.querySelector("#servicios-edit-remove")
+const editarEliminarSalidas=document.querySelector("#salidas-edit-remove")
+const editarEliminarEducacion=document.querySelector("#educacion-edit-remove")
+const editarEliminarTransporte=document.querySelector("#transporte-edit-remove")
+const editarEliminarTrabajo=document.querySelector("#trabajo-edit-remove")
+
 //*********************************************************************************//
 
 //Darle a las 3 display flex
