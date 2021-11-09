@@ -163,43 +163,43 @@
                         </div>
                         <div class="mb-3">
                             <label class="label">Descripción</label>    
-                            <input type="text" class="input">
+                            <input type="text" class="input" id="descripcion">
                         </div>
                         <div class="mb-3">
-                            <label for="" class="label">Monto</label>
-                            <input type="text" class="input">
+                            <label class="label">Monto</label>
+                            <input type="text" class="input" id="monto">
                         </div>
                         <div class="mb-3">
-                            <label for="" class="label">Tipo</label>
+                            <label class="label">Tipo</label>
                         </div>
                         <div class="select is-fullwidth mb-3">
-                            <select name="" id="" class="">
-                                <option value="">Gasto</option>
-                                <option value="">Ganancias</option>
+                            <select name="" id="tipo">
+                                <option value="gasto" id="gasto">Gasto</option>
+                                <option value="ganancias" id="ganancias">Ganancias</option>
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="" class="label">Categoría</label>
+                            <label class="label">Categoría</label>
                         </div>
                         <div class="select is-fullwidth mb-3">
-                            <select name="" id="">
-                                    <option value="">Comida</option>
-                                    <option value="">Servicios</option>
-                                    <option value="">Salidas</option>
-                                    <option value="">Educación</option>
-                                    <option value="">Transporte</option>
-                                    <option value="">Trabajo</option>
+                            <select name="" id="select-categoria">
+                                    <option value="comida" id="comida">Comida</option>
+                                    <option value="servicios" id="servicios">Servicios</option>
+                                    <option value="salidas" id="salidas">Salidas</option>
+                                    <option value="educacion" id="educacion">Educación</option>
+                                    <option value="transporte" id="transporte">Transporte</option>
+                                    <option value="trabajo" id="trabajo">Trabajo</option>
                                 </select>
                         </div>
                         <div class="mb-3">
                             <label for="" class="label">Fecha</label>
                         </div>
                         <div>
-                            <input type="date" class="input is-fullwidth">
+                            <input type="date" class="input is-fullwidth" id="fecha">
                         </div>
                         <div class="navbar-end mt-6">
-                            <button class="button is-light">Cancelar</button>
-                            <button class="button is-success ml-2">Agregar</button>
+                            <button class="button is-light" id="boton-cancelar">Cancelar</button>
+                            <button class="button is-success ml-2" id="boton-agregar">Agregar</button>
                         </div>
                     </div>        
                 </div>    
