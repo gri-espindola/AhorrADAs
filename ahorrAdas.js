@@ -19,16 +19,8 @@ const modalNuevaOperacion = document.querySelector("#modal-nueva-operacion")
 const descripcion = document.querySelector("#descripcion")
 const monto = document.querySelector("#monto")
 const tipo = document.querySelector("#tipo")
-    const gasto = document.querySelector("#gasto")
-    const ganancias = document.querySelector("#ganancias")
 const selectCategoria = document.querySelector("#select-categoria")
-    const comida = document.querySelector("#comida")
-    const servicios = document.querySelector("#servicios")
-    const salidas = document.querySelector("#salidas")
-    const educacion = document.querySelector("#educacion")
-    const transporte = document.querySelector("#transporte")
-    const trabajo = document.querySelector("#trabajo")
-    const fecha = document.querySelector("#fecha")
+
 
 //SECCION CATEGORIAS
 const editarEliminarComida=document.querySelector("#comida-edit-remove")
