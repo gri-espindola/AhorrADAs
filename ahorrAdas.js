@@ -23,12 +23,14 @@ const selectCategoria = document.querySelector("#select-categoria")
 
 
 //SECCION CATEGORIAS
-const editarEliminarComida=document.querySelector("#comida-edit-remove")
-const editarEliminarServicios=document.querySelector("#servicios-edit-remove")
-const editarEliminarSalidas=document.querySelector("#salidas-edit-remove")
-const editarEliminarEducacion=document.querySelector("#educacion-edit-remove")
-const editarEliminarTransporte=document.querySelector("#transporte-edit-remove")
-const editarEliminarTrabajo=document.querySelector("#trabajo-edit-remove")
+const botonAgregarCategoria = document.querySelector("#boton-agregar-categoria")
+const inputAgregarCategoria = document.querySelector("#input-agregar-categoria")
+const editarEliminarComida = document.querySelector("#comida-edit-remove")
+const editarEliminarServicios = document.querySelector("#servicios-edit-remove")
+const editarEliminarSalidas = document.querySelector("#salidas-edit-remove")
+const editarEliminarEducacion = document.querySelector("#educacion-edit-remove")
+const editarEliminarTransporte = document.querySelector("#transporte-edit-remove")
+const editarEliminarTrabajo = document.querySelector("#trabajo-edit-remove")
 
 //*********************************************************************************//
 
@@ -69,3 +71,30 @@ agregarNuevaOperacion.addEventListener('click', () =>{
     modalNuevaOperacion.style.display = 'flex'
     seccionBalance.style.display = 'none'
 })
+
+//seccion categorias
+
+const categorias = ["Comida","Servicios","Salidas","Educación","Transporte","Trabajo"]
+
+
+botonAgregarCategoria.addEventListener ('click',() => {
+    valorDelInput = inputAgregarCategoria.value
+    categorias.push(valorDelInput)
+    console.log(valorDelInput)
+})
+
+console.log(categorias)
+
+/* const agregarCategorias = categorias.reduce ((acc,elemento) => {
+    return acc + `<option value ="${elemento}">${elemento}</option>`
+},"")
+
+inputAgregarCategoria = agregarCategorias
+
+botonAgregarCategoria.addEventListener ('click',() =>{
+    selectCategoria.innerHTML = agregarCategorias
+    categorias.push(inputAgregarCategoria)
+  
+})
+ */
+
