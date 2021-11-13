@@ -85,6 +85,29 @@ botonAgregarCategoria.addEventListener ('click',() => {
 
 console.log(categorias)
 
+const inputAgregado = () =>{
+    valorDelInput = inputAgregarCategoria.value
+    categorias.push(valorDelInput)
+    console.log(valorDelInput)
+}
+
+botonAgregarCategoria.addEventListener ('click',() => {
+    inputAgregado
+})
+
+console.log(categorias)
+
+
+const categoriasConvertidoAJSON = JSON.stringify(inputAgregado)
+localStorage.setItem('categorias', categoriasConvertidoAJSON)
+const infoGuardadaEnLocalCategorias = localStorage.getItem('categorias')
+const datosConvertidos = JSON.parse(infoGuardadaEnLocalCategorias)
+
+console.log(datosConvertidos)
+
+//const datosQueNoExistenLocalStorage = infoGuardadaEnLocalCategorias.getItem('datos')
+
+
 /* const agregarCategorias = categorias.reduce ((acc,elemento) => {
     return acc + `<option value ="${elemento}">${elemento}</option>`
 },"")
