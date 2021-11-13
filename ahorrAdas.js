@@ -81,43 +81,49 @@ botonAgregarCategoria.addEventListener ('click',() => {
     valorDelInput = inputAgregarCategoria.value
     categorias.push(valorDelInput)
     console.log(valorDelInput)
+
+    guardarEnLocalStorage()
+    agregarCategoriasAlHTML()
 })
 
 console.log(categorias)
 
-const inputAgregado = () =>{
-    valorDelInput = inputAgregarCategoria.value
-    categorias.push(valorDelInput)
-    console.log(valorDelInput)
+const guardarEnLocalStorage  = () => {
+    const categoriasConvertidoAJSON = JSON.stringify(categorias)
+    localStorage.setItem('categorias', categoriasConvertidoAJSON)  
+    }
+
+const agregarCategoriasAlHTML = () => {
+    
+    const nuevoHTML = categorias.reduce ((acc,elemento) => {
+    return acc + `
+    <div class="columns">
+        <div class="column is-8" id="agregar-maquetado-categorias">
+            <div class="mb-2">
+                <option class="tag is-primary is-light" id="comida-edit-remove" value="${elemento}">${elemento}</option>
+            </div>
+        </div>
+        <div class="column is-1 is-offset-1">
+            <button class="button is-ghost is-size-7" id="boton-editar-0">Editar</button>
+        </div>
+        <div class="column is-1">
+            <button class="button is-ghost is-size-7">Eliminar</button>
+        </div>
+    </div>
+    `
+    },"")
+
+    const agregarMaquetadoCategorias = document.querySelector("#agregar-maquetado-categorias")
+    agregarMaquetadoCategorias.innerHTML = nuevoHTML    
 }
 
-botonAgregarCategoria.addEventListener ('click',() => {
-    inputAgregado
-})
-
-console.log(categorias)
 
 
-const categoriasConvertidoAJSON = JSON.stringify(inputAgregado)
-localStorage.setItem('categorias', categoriasConvertidoAJSON)
-const infoGuardadaEnLocalCategorias = localStorage.getItem('categorias')
-const datosConvertidos = JSON.parse(infoGuardadaEnLocalCategorias)
-
-console.log(datosConvertidos)
-
-//const datosQueNoExistenLocalStorage = infoGuardadaEnLocalCategorias.getItem('datos')
 
 
-/* const agregarCategorias = categorias.reduce ((acc,elemento) => {
-    return acc + `<option value ="${elemento}">${elemento}</option>`
-},"")
-
-inputAgregarCategoria = agregarCategorias
-
-botonAgregarCategoria.addEventListener ('click',() =>{
-    selectCategoria.innerHTML = agregarCategorias
-    categorias.push(inputAgregarCategoria)
+// botonAgregarCategoria.addEventListener ('click',() =>{
+//     selectCategoria.innerHTML = agregarCategorias
   
-})
- */
+// })
+
 
