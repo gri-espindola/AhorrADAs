@@ -6,6 +6,7 @@ const botonReportes = document.querySelector("#boton-reportes")
 const seccionCategorias = document.querySelector("#seccion-categorias")
 const seccionBalance = document.querySelector("#seccion-balance")
 const seccionReportes = document.querySelector("#seccion-reportes")
+const seccionOperaciones=document.querySelector("seccion-operaciones-center")
 
 //BOTON DE MODALES
 const agregarNuevaOperacion = document.querySelector("#agregar-nueva-operacion")
@@ -31,6 +32,10 @@ const editarEliminarSalidas = document.querySelector("#salidas-edit-remove")
 const editarEliminarEducacion = document.querySelector("#educacion-edit-remove")
 const editarEliminarTransporte = document.querySelector("#transporte-edit-remove")
 const editarEliminarTrabajo = document.querySelector("#trabajo-edit-remove")
+
+//OPERACIONES DETALLADAS
+const modalOperacionDetallada=document.querySelector("#modal-operaciones-detalladas")
+const operacionBoxCenter=document.querySelector("operaciones-center")
 
 //*********************************************************************************//
 
@@ -71,6 +76,18 @@ agregarNuevaOperacion.addEventListener('click', () =>{
     modalNuevaOperacion.style.display = 'flex'
     seccionBalance.style.display = 'none'
 })
+
+//"OPERACION DETALLADA"
+
+modalOperacionDetallada.style.display = 'none'
+
+botonAgregar.addEventListener('click', () =>{
+    modalOperacionDetallada.style.display = 'flex'
+    modalNuevaOperacion.style.display = 'none'
+    seccionOperaciones='none'
+
+})
+
 
 //seccion categorias
 
