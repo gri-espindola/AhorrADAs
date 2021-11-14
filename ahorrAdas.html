@@ -155,7 +155,7 @@
 
             <!--*************** MODAL "Nueva operacion" *******************-->
 
-            <section class="columns is-centered mt-6" id="modal-nueva-operacion">
+            <form class="columns is-centered mt-6" id="modal-nueva-operacion">
                 <div class="box column is-7">
                     <div class="column is-offset-desktop">
                         <div class="mb-3">
@@ -203,7 +203,7 @@
                         </div>
                     </div>        
                 </div>    
-            </section>
+            </form>
         
 
 <!--************************************ SECCIÓN CATEGORIAS **********************************-->
@@ -215,42 +215,42 @@
                     </div>
                     <div class="columns">
                         <div class="column field is-10">
-                            <input type="text" class="input">
+                            <input type="text" class="input" value="" id="input-agregar-categoria">
                         </div>
                         <div class="column is-2">
-                            <button class="button is-success">
+                            <button class="button is-success" id="boton-agregar-categoria">
                                 Agregar
                             </button>
                         </div>
                     </div>
                 <div class="columns">
-                    <div class="column is-8">
+                    <div class="column is-8" id="agregar-maquetado-categorias">
                         <div class="mb-2">
-                        <span class="tag is-primary is-light"id="comida-edit-remove">Comida</span>
+                        <option class="tag is-primary is-light" id="comida-edit-remove">Comida</option>
                         </div>
                         <div class="mb-2">
-                        <span class="tag is-primary is-light"id="servicios-edit-remove">Servicios</span>
+                        <option class="tag is-primary is-light" id="servicios-edit-remove">Servicios</option>
                         </div>
                         <div class="mb-2">
-                        <span class="tag is-primary is-light"id="salidas-edit-remove">Salidas</span>
+                        <option class="tag is-primary is-light" id="salidas-edit-remove">Salidas</option>
                         </div>
                         <div class="mb-2">
-                        <span class="tag is-primary is-light"id="educacion-edit-remove">Educación</span>
+                        <option class="tag is-primary is-light" id="educacion-edit-remove">Educación</option>
                         </div>
                         <div class="mb-2">
-                        <span class="tag is-primary is-light"id="transporte-edit-remove">Transporte</span>
+                        <option class="tag is-primary is-light" id="transporte-edit-remove">Transporte</option>
                         </div>
                         <div class="mb-2">
-                        <span class="tag is-primary is-light"id="trabajo-edit-remove">Trabajo</span>
+                        <option class="tag is-primary is-light" id="trabajo-edit-remove">Trabajo</option>
                         </div>
                     </div>
                     <div class="column is-1 is-offset-1">
-                        <button class="button is-ghost is-size-7">Editar</button>
-                        <button class="button is-ghost is-size-7">Editar</button>
-                        <button class="button is-ghost is-size-7">Editar</button>
-                        <button class="button is-ghost is-size-7">Editar</button>
-                        <button class="button is-ghost is-size-7">Editar</button>
-                        <button class="button is-ghost is-size-7">Editar</button>
+                        <button class="button is-ghost is-size-7" id="boton-editar-0">Editar</button>
+                        <button class="button is-ghost is-size-7" id="boton-editar-1">Editar</button>
+                        <button class="button is-ghost is-size-7" id="boton-editar-2">Editar</button>
+                        <button class="button is-ghost is-size-7" id="boton-editar-3">Editar</button>
+                        <button class="button is-ghost is-size-7" id="boton-editar-4">Editar</button>
+                        <button class="button is-ghost is-size-7" id="boton-editar-5">Editar</button>
                         </div>
                         <div class="column is-1">
                         <button class="button is-ghost is-size-7">Eliminar</button>

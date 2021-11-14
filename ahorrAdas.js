@@ -23,12 +23,14 @@ const selectCategoria = document.querySelector("#select-categoria")
 
 
 //SECCION CATEGORIAS
-const editarEliminarComida=document.querySelector("#comida-edit-remove")
-const editarEliminarServicios=document.querySelector("#servicios-edit-remove")
-const editarEliminarSalidas=document.querySelector("#salidas-edit-remove")
-const editarEliminarEducacion=document.querySelector("#educacion-edit-remove")
-const editarEliminarTransporte=document.querySelector("#transporte-edit-remove")
-const editarEliminarTrabajo=document.querySelector("#trabajo-edit-remove")
+const botonAgregarCategoria = document.querySelector("#boton-agregar-categoria")
+const inputAgregarCategoria = document.querySelector("#input-agregar-categoria")
+const editarEliminarComida = document.querySelector("#comida-edit-remove")
+const editarEliminarServicios = document.querySelector("#servicios-edit-remove")
+const editarEliminarSalidas = document.querySelector("#salidas-edit-remove")
+const editarEliminarEducacion = document.querySelector("#educacion-edit-remove")
+const editarEliminarTransporte = document.querySelector("#transporte-edit-remove")
+const editarEliminarTrabajo = document.querySelector("#trabajo-edit-remove")
 
 //*********************************************************************************//
 
@@ -69,3 +71,52 @@ agregarNuevaOperacion.addEventListener('click', () =>{
     modalNuevaOperacion.style.display = 'flex'
     seccionBalance.style.display = 'none'
 })
+
+//seccion categorias
+
+const categorias = ["Comida","Servicios","Salidas","Educación","Transporte","Trabajo"]
+
+
+botonAgregarCategoria.addEventListener ('click',() => {
+    valorDelInput = inputAgregarCategoria.value
+    categorias.push(valorDelInput)
+    console.log(valorDelInput)
+
+    guardarEnLocalStorage()
+    agregarCategoriasAlHTML()
+})
+
+console.log(categorias)
+
+const guardarEnLocalStorage  = () => {
+    const categoriasConvertidoAJSON = JSON.stringify(categorias)
+    localStorage.setItem('categorias', categoriasConvertidoAJSON)  
+    }
+
+const agregarCategoriasAlHTML = () => {
+    
+    const nuevoHTML = categorias.reduce ((acc,elemento) => {
+    return acc + `
+    <div class="columns">
+        <div class="column is-8" id="agregar-maquetado-categorias">
+            <div class="mb-2">
+                <option class="tag is-primary is-light" id="comida-edit-remove" value="${elemento}">${elemento}</option>
+            </div>
+        </div>
+        <div class="column is-1 is-offset-1">
+            <button class="button is-ghost is-size-7" id="boton-editar-0">Editar</button>
+        </div>
+        <div class="column is-1">
+            <button class="button is-ghost is-size-7">Eliminar</button>
+        </div>
+    </div>
+    `
+    },"")
+
+    const agregarMaquetadoCategorias = document.querySelector("#agregar-maquetado-categorias")
+    agregarMaquetadoCategorias.innerHTML = nuevoHTML    
+}
+
+
+
+
