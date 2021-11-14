@@ -77,13 +77,13 @@ agregarNuevaOperacion.addEventListener('click', () =>{
 const categorias = ["Comida","Servicios","Salidas","Educación","Transporte","Trabajo"]
 
 
-botonAgregarCategoria.addEventListener ('click',() => {
-    valorDelInput = inputAgregarCategoria.value
-    categorias.push(valorDelInput)
-    console.log(valorDelInput)
-})
+//botonAgregarCategoria.addEventListener ('click',() => {
+//     valorDelInput = inputAgregarCategoria.value
+//    categorias.push(valorDelInput)
+//     console.log(valorDelInput)
+// })
 
-console.log(categorias)
+//console.log(categorias)
 
 const inputAgregado = () =>{
     valorDelInput = inputAgregarCategoria.value
