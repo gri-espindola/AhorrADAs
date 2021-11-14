@@ -120,10 +120,3 @@ const agregarCategoriasAlHTML = () => {
 
 
 
-
-// botonAgregarCategoria.addEventListener ('click',() =>{
-//     selectCategoria.innerHTML = agregarCategorias
-  
-// })
-
-
