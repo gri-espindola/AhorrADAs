@@ -82,7 +82,7 @@ agregarNuevaOperacion.addEventListener('click', () => {
 
 
 
-//modalOperacionDetallada.style.display = 'none'
+modalOperacionDetallada.style.display = 'none'
 
 botonAgregar.addEventListener('click', () => {
     modalOperacionDetallada.style.display = 'flex'
