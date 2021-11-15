@@ -84,17 +84,10 @@ agregarNuevaOperacion.addEventListener('click', () => {
 
 //modalOperacionDetallada.style.display = 'none'
 
-<<<<<<< HEAD
 botonAgregar.addEventListener('click', () => {
     modalOperacionDetallada.style.display = 'flex'
     modalNuevaOperacion.style.display = 'none'
     seccionOperaciones.style.display = 'flex'
-=======
-botonAgregar.addEventListener('click', () =>{
-    modalOperacionDetallada.style.display ='flex'
-    modalNuevaOperacion.style.display = 'none'
-    seccionOperaciones.style.display='none'
->>>>>>> 0e28028c0a5a55ad38afb490c1e3eacc7192be79
 
 })
 
