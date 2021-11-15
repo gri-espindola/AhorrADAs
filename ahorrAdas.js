@@ -6,7 +6,7 @@ const botonReportes = document.querySelector("#boton-reportes")
 const seccionCategorias = document.querySelector("#seccion-categorias")
 const seccionBalance = document.querySelector("#seccion-balance")
 const seccionReportes = document.querySelector("#seccion-reportes")
-const seccionOperaciones=document.querySelector("seccion-operaciones-center")
+const seccionOperaciones = document.querySelector("seccion-operaciones-center")
 
 //BOTON DE MODALES
 const agregarNuevaOperacion = document.querySelector("#agregar-nueva-operacion")
@@ -34,18 +34,19 @@ const editarEliminarTransporte = document.querySelector("#transporte-edit-remove
 const editarEliminarTrabajo = document.querySelector("#trabajo-edit-remove")
 
 //OPERACIONES DETALLADAS
-const modalOperacionDetallada=document.querySelector("#modal-operaciones-detalladas")
-const operacionBoxCenter=document.querySelector("operaciones-center")
+const modalOperacionDetallada = document.querySelector("#modal-operaciones-detalladas")
+const operacionBoxCenter = document.querySelector("operaciones-center")
+
 
 //*********************************************************************************//
 
 //Darle a las 3 display flex
-    seccionCategorias.style.display = 'none'
-    seccionBalance.style.display = 'flex'
-    seccionReportes.style.display = 'none'
-    
+seccionCategorias.style.display = 'none'
+seccionBalance.style.display = 'flex'
+seccionReportes.style.display = 'none'
 
-botonCategorias.addEventListener('click', () =>{
+
+botonCategorias.addEventListener('click', () => {
     seccionCategorias.style.display = 'flex'
     seccionBalance.style.display = 'none'
     seccionReportes.style.display = 'none'
@@ -53,7 +54,7 @@ botonCategorias.addEventListener('click', () =>{
 });
 
 
-botonBalance.addEventListener('click', () =>{
+botonBalance.addEventListener('click', () => {
     seccionBalance.style.display = 'flex'
     seccionCategorias.style.display = 'none'
     seccionReportes.style.display = 'none'
@@ -61,7 +62,7 @@ botonBalance.addEventListener('click', () =>{
 });
 
 
-botonReportes.addEventListener('click', () =>{
+botonReportes.addEventListener('click', () => {
     seccionReportes.style.display = 'flex'
     seccionBalance.style.display = 'none'
     seccionCategorias.style.display = 'none'
@@ -72,7 +73,7 @@ botonReportes.addEventListener('click', () =>{
 
 modalNuevaOperacion.style.display = 'none'
 
-agregarNuevaOperacion.addEventListener('click', () =>{
+agregarNuevaOperacion.addEventListener('click', () => {
     modalNuevaOperacion.style.display = 'flex'
     seccionBalance.style.display = 'none'
 })
@@ -81,17 +82,22 @@ agregarNuevaOperacion.addEventListener('click', () =>{
 
 modalOperacionDetallada.style.display = 'none'
 
-botonAgregar.addEventListener('click', () =>{
+botonAgregar.addEventListener('click', () => {
     modalOperacionDetallada.style.display = 'flex'
     modalNuevaOperacion.style.display = 'none'
-    seccionOperaciones='none'
+    seccionOperaciones.style.display = 'flex'
 
 })
 
+modalNuevaOperacion.addEventListener("submit", (e) => {
+e.preventDefault()
+
+
+})
 
 //seccion categorias
 
-const categorias = ["Comida","Servicios","Salidas","Educación","Transporte","Trabajo"]
+const categorias = ["Comida", "Servicios", "Salidas", "Educación", "Transporte", "Trabajo"]
 
 
 //botonAgregarCategoria.addEventListener ('click',() => {
@@ -102,13 +108,13 @@ const categorias = ["Comida","Servicios","Salidas","Educación","Transporte","Tr
 
 //console.log(categorias)
 
-const inputAgregado = () =>{
+const inputAgregado = () => {
     valorDelInput = inputAgregarCategoria.value
     categorias.push(valorDelInput)
     console.log(valorDelInput)
 }
 
-botonAgregarCategoria.addEventListener ('click',() => {
+botonAgregarCategoria.addEventListener('click', () => {
     inputAgregado
 })
 
@@ -134,7 +140,7 @@ inputAgregarCategoria = agregarCategorias
 botonAgregarCategoria.addEventListener ('click',() =>{
     selectCategoria.innerHTML = agregarCategorias
     categorias.push(inputAgregarCategoria)
-  
+
 })
  */
 
