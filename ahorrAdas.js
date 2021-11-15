@@ -40,12 +40,25 @@ const editarEliminarTrabajo = document.querySelector("#trabajo-edit-remove")
     seccionReportes.style.display = 'none'
     
 
-botonCategorias.addEventListener('click', () =>{
+/* botonCategorias.addEventListener('click', () =>{
     seccionCategorias.style.display = 'flex'
     seccionBalance.style.display = 'none'
     seccionReportes.style.display = 'none'
     modalNuevaOperacion.style.display = 'none'
-});
+}); */
+botonCategorias.addEventListener('click', () => {
+    const data = obtenerLocalStorage();
+    if (data) {
+      mostrarListadoCategorias(data);
+    } else {
+      mostrarListadoCategorias(categorias);
+    }
+  
+    seccionCategorias.style.display = 'flex';
+    seccionBalance.style.display = 'none';
+    seccionReportes.style.display = 'none';
+    modalNuevaOperacion.style.display = 'none';
+  });
 
 
 botonBalance.addEventListener('click', () =>{
@@ -77,46 +90,61 @@ agregarNuevaOperacion.addEventListener('click', () =>{
 const categorias = ["Comida","Servicios","Salidas","Educación","Transporte","Trabajo"]
 
 
-botonAgregarCategoria.addEventListener ('click',() => {
-    valorDelInput = inputAgregarCategoria.value
-    categorias.push(valorDelInput)
-    console.log(valorDelInput)
-
-    guardarEnLocalStorage()
-    agregarCategoriasAlHTML()
-})
-
-console.log(categorias)
-
-const guardarEnLocalStorage  = () => {
-    const categoriasConvertidoAJSON = JSON.stringify(categorias)
-    localStorage.setItem('categorias', categoriasConvertidoAJSON)  
+botonAgregarCategoria.addEventListener('click', () => {
+    valorDelInput = inputAgregarCategoria.value;
+    const data = obtenerLocalStorage();
+    if (data) {
+      data.push(valorDelInput);
+      guardarEnLocalStorage(data);
+      mostrarListadoCategorias(data);
+    } else {
+      categorias.push(valorDelInput);
+      guardarEnLocalStorage(categorias);
+      mostrarListadoCategorias(categorias);
     }
+  });
 
-const agregarCategoriasAlHTML = () => {
-    
-    const nuevoHTML = categorias.reduce ((acc,elemento) => {
-    return acc + `
+
+const guardarEnLocalStorage = (nuevoArrayCategorias) => {
+    const categoriasConvertidoAJSON = JSON.stringify(nuevoArrayCategorias);
+    localStorage.setItem('categorias', categoriasConvertidoAJSON);
+  };
+
+  const obtenerLocalStorage = () => {
+    const data = localStorage.getItem('categorias');
+    if (data) {
+      const dataJs = JSON.parse(data);
+      return dataJs;
+    }
+  };
+
+
+
+mostrarListadoCategorias = (dataJs) => {
+  const htmlInicial = dataJs.reduce((acc, elemento, index) => {
+    return (
+      acc +
+      `
     <div class="columns">
-        <div class="column is-8" id="agregar-maquetado-categorias">
+        <div class="column is-8" id="agregar-maquetado-categorias" >
             <div class="mb-2">
-                <option class="tag is-primary is-light" id="comida-edit-remove" value="${elemento}">${elemento}</option>
+                <option class="tag is-primary is-light" value="${elemento}">${elemento}</option>
             </div>
         </div>
         <div class="column is-1 is-offset-1">
-            <button class="button is-ghost is-size-7" id="boton-editar-0">Editar</button>
+            <button class="button is-ghost is-size-7" id="boton-editar-${index}">Editar</button>
         </div>
         <div class="column is-1">
-            <button class="button is-ghost is-size-7">Eliminar</button>
+            <button class="button is-ghost is-size-7" id="boton-eliminar-${index}">Eliminar</button>
         </div>
     </div>
     `
-    },"")
+    );
+  }, '');
 
-    const agregarMaquetadoCategorias = document.querySelector("#agregar-maquetado-categorias")
-    agregarMaquetadoCategorias.innerHTML = nuevoHTML    
-}
-
-
-
+  const agregarMaquetadoCategorias = document.querySelector(
+    '#agregar-maquetado-categorias'
+  );
+  agregarMaquetadoCategorias.innerHTML = htmlInicial;
+};
 
