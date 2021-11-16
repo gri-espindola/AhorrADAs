@@ -38,6 +38,7 @@ const modalOperacionDetallada = document.querySelector("#modal-operaciones-detal
 const operacionBoxCenter = document.querySelector("operaciones-center")
 
 
+
 //*********************************************************************************//
 
 //Darle a las 3 display flex
@@ -82,20 +83,21 @@ agregarNuevaOperacion.addEventListener('click', () => {
 
 
 
-modalOperacionDetallada.style.display = 'none'
+ modalOperacionDetallada.style.display = 'none'
 
 botonAgregar.addEventListener('click', () => {
-    modalOperacionDetallada.style.display = 'flex'
-    modalNuevaOperacion.style.display = 'none'
-    seccionOperaciones.style.display = 'flex'
+     modalOperacionDetallada.style.display = 'flex'
+     modalNuevaOperacion.style.display = 'none'
+     seccionOperaciones.style.display = 'none'
 
-})
+ })
 
-modalNuevaOperacion.addEventListener("submit", (e) => {
-e.preventDefault()
+ modalNuevaOperacion.addEventListener("submit", (e) => {
+ e.preventDefault()
 
 
-})
+ })
+
 
 //seccion categorias
 
