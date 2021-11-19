@@ -40,12 +40,7 @@ const editarEliminarTrabajo = document.querySelector("#trabajo-edit-remove")
     seccionReportes.style.display = 'none'
     
 
-/* botonCategorias.addEventListener('click', () =>{
-    seccionCategorias.style.display = 'flex'
-    seccionBalance.style.display = 'none'
-    seccionReportes.style.display = 'none'
-    modalNuevaOperacion.style.display = 'none'
-}); */
+
 botonCategorias.addEventListener('click', () => {
     const data = obtenerLocalStorage();
     if (data) {
@@ -86,6 +81,8 @@ agregarNuevaOperacion.addEventListener('click', () =>{
 })
 
 //seccion categorias
+
+//Función para agregar categorias desde el input
 
 const categorias = ["Comida","Servicios","Salidas","Educación","Transporte","Trabajo"]
 
@@ -148,3 +145,34 @@ mostrarListadoCategorias = (dataJs) => {
   agregarMaquetadoCategorias.innerHTML = htmlInicial;
 };
 
+// Función para eliminar categorias
+
+//1- Agregar un evento al boton eliminar que al hacer click me elimine la categoria
+//  2- Eliminarlo del LocalStorage -> storage.removeItem()
+//  3- Eliminar maquetado de esa categoria
+
+const botonEliminar = document.querySelector('#boton-eliminar')
+
+botonEliminar.addEventListener('click', () => {
+  const data = obtenerLocalStorage();
+  if (data) {
+    data.removeItem(valorDelInput);
+    guardarEnLocalStorage(data);
+    mostrarListadoCategorias(data);
+  } else {
+    categorias.push(valorDelInput);
+    guardarEnLocalStorage(categorias);
+    mostrarListadoCategorias(categorias);
+  }
+});
+
+const eliminarCategoria = (elemento, index) => {
+  categorias.filter((elemento)) => {
+      if(categorias.includes(index)) {
+          return categorias
+      }
+      setItem(categorias)
+      console.log(item)
+      localStorage.removeItem('categorias', categorias)
+  })
+}
