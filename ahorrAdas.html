@@ -133,7 +133,7 @@
                     <div class="columns">
 
                         <!-- Operaciones -->
-                        <div class="column">
+                        <div class="column"id="seccion-operaciones-center">
                             <h3 class="is-size-4 has-text-weight-bold">Operaciones</h3>
                         </div>
                         <div class="column has-text-right-tablet">
@@ -280,8 +280,49 @@
                 </div>
             </div>
         </section>
+ <!--************************************ SECCIÓN Operacion-Detallada  ********************************-->
+ <section class="columns operaciones-contenedor"id="modal-operaciones-detalladas">
+    <div class=" container column is-7 is-centered mt-5 box">
+      <div class="column">
+        <h3 class="is-size-4 has-text-weight-bold">Operaciones</h3>
+      <div class="column has-text-right-tablet">
+        <button type="button" class="button is-primary" id="ver-operación">
+          + Nueva operación
+        </button>
+      </div>
+    </div>
+    <div id="operaciones-caracteristicas" class="">
+        <div class="columns has-text-weight-semibold is-hidden-mobile">
+          <div class="column is-3">Descripción</div>
+          <div class="column is-3">Categoría</div>
+          <div class="column is-2 has-text-right">Fecha</div>
+          <div class="column is-2 has-text-right">Monto</div>
+          <div class="column is-2 has-text-right">Acciones</div>
+        </div>
+        <div id="operaciones"><div class="mb-3">
+<div class="columns is-multiline is-mobile is-vcentered">
+<div class="column is-3-tablet is-6-mobile">
+<h3 class="has-text-weight-semibold"></h3>
+</div>
+<div class="column is-3-tablet is-6-mobile has-text-right-mobile">
+<span class="tag is-primary is-light">Comida</span>
+</div>
+<div class="column is-2-tablet has-text-grey is-hidden-mobile has-text-right-tablet">
+14/11/2021
+</div>
+<div class="column is-2-tablet is-6-mobile has-text-weight-bold has-text-right-tablet is-size-4-mobile has-text-danger">
+-$0
+</div>
+<div class="column is-2-tablet is-6-mobile has-text-right">
+<p class="is-fullwidth">
+  <a href="#" class="mr-3 is-size-7 edit-link">Editar</a>
+  <a href="#" class="is-size-7 delete-link">Eliminar</a>
+  
+</p>
+</div>
+</section>
 
-    </header>
+</header>
 
 
 
@@ -289,5 +330,6 @@
 
 
     <script src="./ahorrAdas.js"></script>
+ 
 </body>
 </html>
