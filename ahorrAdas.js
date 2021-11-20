@@ -1,124 +1,156 @@
 //botones de las secciones
-const botonCategorias = document.querySelector("#boton-categorias")
-const botonBalance = document.querySelector("#boton-balance")
-const botonReportes = document.querySelector("#boton-reportes")
+const botonCategorias = document.querySelector('#boton-categorias');
+const botonBalance = document.querySelector('#boton-balance');
+const botonReportes = document.querySelector('#boton-reportes');
 //secciones
-const seccionCategorias = document.querySelector("#seccion-categorias")
-const seccionBalance = document.querySelector("#seccion-balance")
-const seccionReportes = document.querySelector("#seccion-reportes")
+const seccionCategorias = document.querySelector('#seccion-categorias');
+const seccionBalance = document.querySelector('#seccion-balance');
+const seccionReportes = document.querySelector('#seccion-reportes');
+const seccionOperaciones = document.querySelector('seccion-operaciones-center');
 
 //BOTON DE MODALES
-const agregarNuevaOperacion = document.querySelector("#agregar-nueva-operacion")
-const botonCancelar = document.querySelector("#boton-cancelar")
-const botonAgregar = document.querySelector("#boton-agregar")
+const agregarNuevaOperacion = document.querySelector(
+  '#agregar-nueva-operacion'
+);
+const botonCancelar = document.querySelector('#boton-cancelar');
+const botonAgregar = document.querySelector('#boton-agregar');
 
 // MODALES
-const modalNuevaOperacion = document.querySelector("#modal-nueva-operacion")
+const modalNuevaOperacion = document.querySelector('#modal-nueva-operacion');
 
 // INPUTS DE MI MODAL "+Nueva operacion"
-const descripcion = document.querySelector("#descripcion")
-const monto = document.querySelector("#monto")
-const tipo = document.querySelector("#tipo")
-const selectCategoria = document.querySelector("#select-categoria")
-
+const descripcion = document.querySelector('#descripcion');
+const monto = document.querySelector('#monto');
+const tipo = document.querySelector('#tipo');
+const selectCategoria = document.querySelector('#select-categoria');
 
 //SECCION CATEGORIAS
-const botonAgregarCategoria = document.querySelector("#boton-agregar-categoria")
-const inputAgregarCategoria = document.querySelector("#input-agregar-categoria")
-const editarEliminarComida = document.querySelector("#comida-edit-remove")
-const editarEliminarServicios = document.querySelector("#servicios-edit-remove")
-const editarEliminarSalidas = document.querySelector("#salidas-edit-remove")
-const editarEliminarEducacion = document.querySelector("#educacion-edit-remove")
-const editarEliminarTransporte = document.querySelector("#transporte-edit-remove")
-const editarEliminarTrabajo = document.querySelector("#trabajo-edit-remove")
+const botonAgregarCategoria = document.querySelector(
+  '#boton-agregar-categoria'
+);
+const inputAgregarCategoria = document.querySelector(
+  '#input-agregar-categoria'
+);
+const editarEliminarComida = document.querySelector('#comida-edit-remove');
+const editarEliminarServicios = document.querySelector(
+  '#servicios-edit-remove'
+);
+const editarEliminarSalidas = document.querySelector('#salidas-edit-remove');
+const editarEliminarEducacion = document.querySelector(
+  '#educacion-edit-remove'
+);
+const editarEliminarTransporte = document.querySelector(
+  '#transporte-edit-remove'
+);
+const editarEliminarTrabajo = document.querySelector('#trabajo-edit-remove');
+
+//OPERACIONES DETALLADAS
+const modalOperacionDetallada = document.querySelector(
+  '#modal-operaciones-detalladas'
+);
+const operacionBoxCenter = document.querySelector('operaciones-center');
 
 //*********************************************************************************//
 
 //Darle a las 3 display flex
-    seccionCategorias.style.display = 'none'
-    seccionBalance.style.display = 'flex'
-    seccionReportes.style.display = 'none'
-    
-
+seccionCategorias.style.display = 'none';
+seccionBalance.style.display = 'flex';
+seccionReportes.style.display = 'none';
 
 botonCategorias.addEventListener('click', () => {
-    const data = obtenerLocalStorage();
-    if (data) {
-      mostrarListadoCategorias(data);
-    } else {
-      mostrarListadoCategorias(categorias);
-    }
-  
-    seccionCategorias.style.display = 'flex';
-    seccionBalance.style.display = 'none';
-    seccionReportes.style.display = 'none';
-    modalNuevaOperacion.style.display = 'none';
-  });
+  categorias = obtenerLocalStorage();
+  mostrarListadoCategorias(categorias);
 
-
-botonBalance.addEventListener('click', () =>{
-    seccionBalance.style.display = 'flex'
-    seccionCategorias.style.display = 'none'
-    seccionReportes.style.display = 'none'
-    modalNuevaOperacion.style.display = 'none'
+  seccionCategorias.style.display = 'flex';
+  seccionBalance.style.display = 'none';
+  seccionReportes.style.display = 'none';
+  modalNuevaOperacion.style.display = 'none';
 });
 
+botonBalance.addEventListener('click', () => {
+  categorias = obtenerLocalStorage();
+  seccionBalance.style.display = 'flex';
+  seccionCategorias.style.display = 'none';
+  seccionReportes.style.display = 'none';
+  modalNuevaOperacion.style.display = 'none';
+});
 
-botonReportes.addEventListener('click', () =>{
-    seccionReportes.style.display = 'flex'
-    seccionBalance.style.display = 'none'
-    seccionCategorias.style.display = 'none'
-    modalNuevaOperacion.style.display = 'none'
+botonReportes.addEventListener('click', () => {
+  categorias = obtenerLocalStorage();
+  seccionReportes.style.display = 'flex';
+  seccionBalance.style.display = 'none';
+  seccionCategorias.style.display = 'none';
+  modalNuevaOperacion.style.display = 'none';
 });
 
 //"+NUEVA OPERACION"
 
-modalNuevaOperacion.style.display = 'none'
+modalNuevaOperacion.style.display = 'none';
 
-agregarNuevaOperacion.addEventListener('click', () =>{
-    modalNuevaOperacion.style.display = 'flex'
-    seccionBalance.style.display = 'none'
-})
+agregarNuevaOperacion.addEventListener('click', () => {
+  modalNuevaOperacion.style.display = 'flex';
+  seccionBalance.style.display = 'none';
+});
+
+//"OPERACION DETALLADA"
+
+modalOperacionDetallada.style.display = 'none';
+
+botonAgregar.addEventListener('click', () => {
+  modalOperacionDetallada.style.display = 'flex';
+  modalNuevaOperacion.style.display = 'none';
+  seccionOperaciones.style.display = 'none';
+});
+
+modalNuevaOperacion.addEventListener('submit', (e) => {
+  e.preventDefault();
+});
 
 //seccion categorias
 
-//Función para agregar categorias desde el input
+const agregarMaquetadoCategorias = document.querySelector(
+  '#agregar-maquetado-categorias'
+);
 
-const categorias = ["Comida","Servicios","Salidas","Educación","Transporte","Trabajo"]
+let categorias = [
+  'Comida',
+  'Servicios',
+  'Salidas',
+  'Educación',
+  'Transporte',
+  'Trabajo',
+];
 
+botonAgregarCategoria.addEventListener('click', (e) => {
+  e.preventDefault();
+  valorDelInput = inputAgregarCategoria.value;
+  if (!valorDelInput) {
+    return;
+  }
+  inputAgregarCategoria.value = '';
+  crearCategoria(valorDelInput);
+  guardarEnLocalStorage();
+});
 
-botonAgregarCategoria.addEventListener('click', () => {
-    valorDelInput = inputAgregarCategoria.value;
-    const data = obtenerLocalStorage();
-    if (data) {
-      data.push(valorDelInput);
-      guardarEnLocalStorage(data);
-      mostrarListadoCategorias(data);
-    } else {
-      categorias.push(valorDelInput);
-      guardarEnLocalStorage(categorias);
-      mostrarListadoCategorias(categorias);
-    }
-  });
+const crearCategoria = (categoria) => {
+  return categorias.push(categoria);
+};
 
+const guardarEnLocalStorage = () => {
+  localStorage.setItem('categorias', JSON.stringify(categorias));
+  mostrarListadoCategorias();
+};
 
-const guardarEnLocalStorage = (nuevoArrayCategorias) => {
-    const categoriasConvertidoAJSON = JSON.stringify(nuevoArrayCategorias);
-    localStorage.setItem('categorias', categoriasConvertidoAJSON);
-  };
+const obtenerLocalStorage = () => {
+  categoriasLocalStorage = JSON.parse(localStorage.getItem('categorias'));
+  if (categoriasLocalStorage) {
+    categorias = categoriasLocalStorage;
+  }
+  return categorias;
+};
 
-  const obtenerLocalStorage = () => {
-    const data = localStorage.getItem('categorias');
-    if (data) {
-      const dataJs = JSON.parse(data);
-      return dataJs;
-    }
-  };
-
-
-
-mostrarListadoCategorias = (dataJs) => {
-  const htmlInicial = dataJs.reduce((acc, elemento, index) => {
+mostrarListadoCategorias = () => {
+  htmlInicial = categorias.reduce((acc, elemento, index) => {
     return (
       acc +
       `
@@ -138,41 +170,5 @@ mostrarListadoCategorias = (dataJs) => {
     `
     );
   }, '');
-
-  const agregarMaquetadoCategorias = document.querySelector(
-    '#agregar-maquetado-categorias'
-  );
   agregarMaquetadoCategorias.innerHTML = htmlInicial;
 };
-
-// Función para eliminar categorias
-
-//1- Agregar un evento al boton eliminar que al hacer click me elimine la categoria
-//  2- Eliminarlo del LocalStorage -> storage.removeItem()
-//  3- Eliminar maquetado de esa categoria
-
-const botonEliminar = document.querySelector('#boton-eliminar')
-
-botonEliminar.addEventListener('click', () => {
-  const data = obtenerLocalStorage();
-  if (data) {
-    data.removeItem(valorDelInput);
-    guardarEnLocalStorage(data);
-    mostrarListadoCategorias(data);
-  } else {
-    categorias.push(valorDelInput);
-    guardarEnLocalStorage(categorias);
-    mostrarListadoCategorias(categorias);
-  }
-});
-
-const eliminarCategoria = (elemento, index) => {
-  categorias.filter((elemento)) => {
-      if(categorias.includes(index)) {
-          return categorias
-      }
-      setItem(categorias)
-      console.log(item)
-      localStorage.removeItem('categorias', categorias)
-  })
-}
