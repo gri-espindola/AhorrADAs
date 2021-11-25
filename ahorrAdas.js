@@ -57,12 +57,7 @@ seccionCategorias.style.display = 'none';
 seccionBalance.style.display = 'flex';
 seccionReportes.style.display = 'none';
 
-/* botonCategorias.addEventListener('click', () =>{
-    seccionCategorias.style.display = 'flex'
-    seccionBalance.style.display = 'none'
-    seccionReportes.style.display = 'none'
-    modalNuevaOperacion.style.display = 'none'
-}); */
+
 botonCategorias.addEventListener('click', () => {
   categorias = obtenerLocalStorage();
   mostrarListadoCategorias(categorias);
@@ -180,7 +175,6 @@ mostrarListadoCategorias = () => {
   agregarMaquetadoCategorias.innerHTML = htmlInicial;
 };
 
-agregarMaquetadoCategorias.addEventListener('click', (e) => {  e.preventDefault();
   agregarMaquetadoCategorias.addEventListener('click', (e) => {
     e.preventDefault();
   
@@ -190,9 +184,17 @@ agregarMaquetadoCategorias.addEventListener('click', (e) => {  e.preventDefault(
         // aca va la funcion de editar
       }
       if (e.target.innerHTML === 'Eliminar') {
-        // aca va la funcion de eliminar
+        eliminarCategoria(textoCategoria);
+        }
       }
     }
-  }); 
-})
+  ); 
+
+  const eliminarCategoria = (categoriaAEliminar) => {
+    const indexArray = categorias.findIndex(
+      (categoria) => categoria === categoriaAEliminar
+    );
+    categorias.splice(indexArray, 1);
+    guardarEnLocalStorage();
+  };
 
