@@ -278,19 +278,33 @@ const eliminarCategoria = (categoriaAEliminar) => {
 };
 
   //Seccion filtros
+
+  //Alternar filtros
   
-  const alternarFiltros = () => {
-    const botonOcultar = document.querySelector('#boton-ocultar')
+  
+    const botonOcultarfiltros = document.querySelector('#boton-ocultar')
     const filtrosGenerales = document.querySelector('#filtrosGenerales')
 
-    if (botonOcultar.innerText === 'Ocultar Filtros') {
-        botonOcultar.innerText = 'Mostrar Filtros'
+    botonOcultarfiltros.addEventListener ('click', (e) => {
+      e.preventDefault();
+
+    if (botonOcultarfiltros.innerText === 'Ocultar Filtros') {
+        botonOcultarfiltros.innerText = 'Mostrar Filtros'
         filtrosGenerales.classList.add('is-hidden')
     } else {
-        botonOcultar.innerText = 'Ocultar Filtros'
+        botonOcultarfiltros.innerText = 'Ocultar Filtros'
         filtrosGenerales.classList.remove('is-hidden')
     }
-}
+    }
+    )
+
+
+
+//Funciones filtros
+
+
+
+
 
     
   
