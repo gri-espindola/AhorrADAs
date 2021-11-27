@@ -277,3 +277,25 @@ const eliminarCategoria = (categoriaAEliminar) => {
   guardarEnLocalStorage();
 };
 
+  //Seccion filtros
+  
+  const alternarFiltros = () => {
+    const botonOcultar = document.querySelector('#boton-ocultar')
+    const filtrosGenerales = document.querySelector('#filtrosGenerales')
+
+    if (botonOcultar.innerText === 'Ocultar Filtros') {
+        botonOcultar.innerText = 'Mostrar Filtros'
+        filtrosGenerales.classList.add('is-hidden')
+    } else {
+        botonOcultar.innerText = 'Ocultar Filtros'
+        filtrosGenerales.classList.remove('is-hidden')
+    }
+}
+
+    
+  
+
+  
+
+  
+  

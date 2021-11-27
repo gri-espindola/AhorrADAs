@@ -80,61 +80,65 @@
                         <div class="columns">
                             <h3 class="column is-5 is-size-4 has-text-weight-bold">Filtros</h3>
                             <div class="column is-5 has-text-right is-offset-1">
-                                <button class="button is-ghost">Ocultar filtros</button>
+                                <button class="button is-ghost" id="boton-ocultar"onclick="alternarFiltros()">Ocultar filtros</button>
                             </div>
+                            
                         </div>
-                        <div class="field">
-                            <label class="label" for="">Tipo</label>
-                        </div>
-                        <div class="select is-fullwidth">
-                            <select name="" id="">
-                                <option value="Todos">Todos</option>
-                                <option value="Gasto">Gasto</option>
-                                <option value="Ganacia">Ganancia</option>
-                            </select>
-                        </div>
-
-                        <!-- Categoria -->
-                        <div class="field">
-                            <label for="" class="label">Categoría</label>
-                        </div>
-                        <div class="select is-fullwidth">
-                            <select name="" id="">
-                                <option value="Comida">Comida</option>
-                                <option value="Servicios">Servicios</option>
-                                <option value="Salidas">Salidas</option>
-                                <option value="Educación">Educación</option>
-                                <option value="Transporte">Transporte</option>
-                                <option value="Trabajo">Trabajo</option>
-                            </select>
-                        </div>
-
-                        <!-- Desde -->
-                        <div class="field">
-                            <label for="" class="label">Desde</label>
-                        </div>
-                        <div class="field">
-                            <input type="date" class="input">
-                        </div>
-
-                        <!-- Ordenar por -->
-                        <div class="field">
-                            <label for="" class="label">Ordenar por</label>
-                        </div>
-                        <div class="select is-fullwidth">
-                            <select name="" id="">
-                                <option value="Mas recientes">Más recientes</option>
-                                <option value="Menos recientes">Menos recientes</option>
-                                <option value="Mayor monto">Mayor monto</option>
-                                <option value="Menor monto">Menor monto</option>
-                                <option value="A/Z">A/Z</option>
-                                <option value="Z/A">Z/A</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <!--************************************ BOX OPERACIONES **********************************-->
+                       
+                        <div id="filtrosGenerales">
+                            <div class="field">
+                                <label class="label" for="">Tipo</label>
+                            </div>
+                            <div  class="select is-fullwidth">
+                                <select name="" id="">
+                                    <option value="Todos">Todos</option>
+                                    <option value="Gasto">Gasto</option>
+                                    <option value="Ganacia">Ganancia</option>
+                                </select>
+                            </div>
+                        
+                       
+                            <!-- Categoria -->
+                            <div class="field">
+                                <label for="" class="label">Categoría</label>
+                            </div>
+                            <div class="select is-fullwidth">    
+                                <select name="" id="">
+                                    <option value="Comida">Comida</option>
+                                    <option value="Servicios">Servicios</option>
+                                    <option value="Salidas">Salidas</option>
+                                    <option value="Educación">Educación</option>
+                                    <option value="Transporte">Transporte</option>
+                                    <option value="Trabajo">Trabajo</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Desde -->
+                            <div class="field">
+                                <label for="" class="label">Desde</label>
+                            </div>
+                            <div class="field">    
+                                <input type="date" class="input">
+                            </div>
+                            
+                            <!-- Ordenar por -->
+                            <div class="field">
+                                <label for="" class="label">Ordenar por</label>
+                            </div>
+                            <div class="select is-fullwidth">    
+                                <select name="" id="">
+                                    <option value="Mas recientes">Más recientes</option>
+                                    <option value="Menos recientes">Menos recientes</option>
+                                    <option value="Mayor monto">Mayor monto</option>
+                                    <option value="Menor monto">Menor monto</option>
+                                    <option value="A/Z">A/Z</option>
+                                    <option value="Z/A">Z/A</option>
+                                </select>
+                            </div>
+                        </div>    
+                </div>     
+            </div>
+    <!--************************************ BOX OPERACIONES **********************************-->
                 <div class="box column is-6 mt-3">
                     <div class="columns">
                         <!-- id="seccion-operaciones-center"
