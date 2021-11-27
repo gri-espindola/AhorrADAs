@@ -74,9 +74,12 @@
                         <div class="columns">
                             <h3 class="column is-5 is-size-4 has-text-weight-bold">Filtros</h3>
                             <div class="column is-5 has-text-right is-offset-1">
-                                <button class="button is-ghost">Ocultar filtros</button>
+                                <button class="button is-ghost" id="boton-ocultar"onclick="alternarFiltros()">Ocultar filtros</button>
                             </div>
+                            
                         </div>
+                        <!--Iria acá el id de filtros Generales para que desaparezca solo está parte-->
+                        <div id="filtrosGenerales">
                             <div class="field">
                                 <label class="label" for="">Tipo</label>
                             </div>
@@ -87,7 +90,8 @@
                                     <option value="Ganacia">Ganancia</option>
                                 </select>
                             </div>
-
+                        </div>
+                       
                             <!-- Categoria -->
                             <div class="field">
                                 <label for="" class="label">Categoría</label>
