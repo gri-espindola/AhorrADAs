@@ -44,6 +44,13 @@ const editarEliminarTransporte = document.querySelector(
 );
 const editarEliminarTrabajo = document.querySelector('#trabajo-edit-remove');
 
+//Modal editar categoria
+
+const seccionEditarCategoria = document.querySelector('section-editar-categoria')
+const botonEditarCancelar = document.querySelector('boton-editar-cancelar')
+const botonEditarOk = document.querySelector('boton-editar-ok')
+
+
 //OPERACIONES DETALLADAS
 const modalOperacionDetallada = document.querySelector(
   '#modal-operaciones-detalladas'
@@ -52,11 +59,11 @@ const operacionBoxCenter = document.querySelector('operaciones-center');
 
 //*********************************************************************************//
 
-//Darle a las 3 display flex
+//Ocultando y mostrando secciones
 seccionCategorias.style.display = 'none';
 seccionBalance.style.display = 'flex';
 seccionReportes.style.display = 'none';
-
+seccionEditarCategoria.style.display = 'none'
 
 botonCategorias.addEventListener('click', () => {
   categorias = obtenerLocalStorage();
@@ -197,4 +204,15 @@ mostrarListadoCategorias = () => {
     categorias.splice(indexArray, 1);
     guardarEnLocalStorage();
   };
+  
+  const editarCategoria = (categoriaAEditar) => {
+    const indexArray = categorias.findIndex(
+      (categoria) => categoria === categoriaAEditar
+    );
+    categorias.splice(indexArray, 1);
+    guardarEnLocalStorage();
+  };
 
+  //modal editar
+
+  
