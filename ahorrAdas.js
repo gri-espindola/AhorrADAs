@@ -327,13 +327,11 @@ mostrarOperacionesEnHTML(operaciones)
 filtroTipo.onchange=()=>{
   const operacionesFiltradasporTipo=operaciones.filter((operaciones)=>{
     return operaciones.tipo === filtroTipo.value
+    
+      
   })
   mostrarListadoOperaciones(operacionesFiltradasporTipo);
-
-  //console.log (filtroTipo.value)
-  
-  //seccionImagenSinResultado.style.display = 'none';
-  //modalOperacionDetallada.style.display = 'flex';
+  console.log (filtroTipo.value)
 }
 
 filtroCategoria.onchange=()=>{
@@ -346,8 +344,7 @@ filtroCategoria.onchange=()=>{
 
   console.log (filtroCategoria.value)
   
-  //seccionImagenSinResultado.style.display = 'none';
-  //modalOperacionDetallada.style.display = 'flex';
+  
 }
 
 
