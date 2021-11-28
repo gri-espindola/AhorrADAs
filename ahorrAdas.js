@@ -340,6 +340,9 @@ filtroTipo.onchange=()=>{
 
 filtroCategoria.onchange=()=>{
   const operacionesFiltradasporCategoria=operaciones.filter((operaciones)=>{
+    if (filtroCategoria.value === "Todas"){
+    return operaciones
+    }
     return operaciones.categoria === filtroCategoria.value
   })
 
