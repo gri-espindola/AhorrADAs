@@ -55,6 +55,14 @@ const modalOperacionDetallada = document.querySelector(
 );
 const operacionBoxCenter = document.querySelector('operaciones-center');
 
+//Alternar filtros
+const botonOcultarfiltros = document.querySelector('#boton-ocultar')
+const filtrosGenerales = document.querySelector('#filtrosGenerales') 
+//Funciones filtros 
+const filtroTipo=document.querySelector("#filtro-tipo")
+const filtroCategoria=document.querySelector("#filtro-categoria") 
+
+
 //*********************************************************************************//
 
 //Darle a las 3 display flex
@@ -100,7 +108,8 @@ agregarNuevaOperacion.addEventListener('click', () => {
 
 //"OPERACION DETALLADA"
 
-let operaciones = [];
+let operaciones = JSON.parse(localStorage.getItem("operaciones")) || [];
+
 
 modalOperacionDetallada.style.display = 'none';
 botonAgregar.addEventListener('click', () => {
@@ -122,7 +131,7 @@ modalNuevaOperacion.addEventListener('submit', (e) => {
   
   operaciones.push(OperacionNuevaObjeto);
   guardarEnLocalStorageGenerica('operaciones', operaciones)
-  mostrarListadoOperaciones();
+  mostrarListadoOperaciones(operaciones);
   seccionImagenSinResultado.style.display = 'none';
   seccionBalance.style.display = 'flex';
 
@@ -209,8 +218,8 @@ mostrarListadoCategorias = () => {
 
 
 
-const mostrarListadoOperaciones = () => {
-  htmlInicial = operaciones.reduce((acc, elemento, index) => {
+const mostrarListadoOperaciones = (arrayFiltrado) => {
+  htmlInicial = arrayFiltrado.reduce((acc, elemento, index) => {
     return (
       acc +
       `
@@ -278,19 +287,85 @@ const eliminarCategoria = (categoriaAEliminar) => {
 };
 
   //Seccion filtros
-  
-  const alternarFiltros = () => {
-    const botonOcultar = document.querySelector('#boton-ocultar')
-    const filtrosGenerales = document.querySelector('#filtrosGenerales')
 
-    if (botonOcultar.innerText === 'Ocultar Filtros') {
-        botonOcultar.innerText = 'Mostrar Filtros'
-        filtrosGenerales.classList.add('is-hidden')
-    } else {
-        botonOcultar.innerText = 'Ocultar Filtros'
-        filtrosGenerales.classList.remove('is-hidden')
-    }
+  botonOcultarfiltros.addEventListener ('click', (e) => {
+    e.preventDefault();
+
+  if (botonOcultarfiltros.innerText === 'Ocultar Filtros') {
+      botonOcultarfiltros.innerText = 'Mostrar Filtros'
+      filtrosGenerales.classList.add('is-hidden')
+  } else {
+      botonOcultarfiltros.innerText = 'Ocultar Filtros'
+      filtrosGenerales.classList.remove('is-hidden')
+  }
+  }
+  )
+  
+// Funcion filtros
+const mostrarOperacionesEnHTML = (array) => {
+  let acc = ""
+
+  array.map((operacion) => {
+    acc = acc + `
+    <div class="columns has-text-weight-semibold is-hidden-mobile">
+      <div class="column is-3">${operacion.Descripción}</div>
+      <div class="column is-3">${operacion.Categoría}</div>
+      <div class="column is-2 has-text-right">${operacion.Fecha}</div>
+      <div class="column is-2 has-text-right">${operacion.Monto}</div>
+      <div class="column is-2 has-text-right">${operacion.Acciones}</div>
+    </div>
+    `
+  })
+
+  agregarMaquetadoOperaciones.innerHTML = acc
 }
+
+mostrarOperacionesEnHTML(operaciones)
+
+
+
+filtroTipo.onchange=()=>{
+  const operacionesFiltradasporTipo=operaciones.filter((operaciones)=>{
+    return operaciones.tipo === filtroTipo.value
+    
+      
+  })
+  mostrarListadoOperaciones(operacionesFiltradasporTipo);
+  console.log (filtroTipo.value)
+}
+
+filtroCategoria.onchange=()=>{
+  const operacionesFiltradasporCategoria=operaciones.filter((operaciones)=>{
+    return operaciones.categoria === filtroCategoria.value
+  })
+
+  
+  mostrarListadoOperaciones(operacionesFiltradasporCategoria);
+
+  console.log (filtroCategoria.value)
+  
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     
   
