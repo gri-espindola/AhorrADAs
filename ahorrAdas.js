@@ -301,6 +301,27 @@ const eliminarCategoria = (categoriaAEliminar) => {
   )
   
 // Funcion filtros
+const mostrarOperacionesEnHTML = (array) => {
+  let acc = ""
+
+  array.map((operacion) => {
+    acc = acc + `
+    <div class="columns has-text-weight-semibold is-hidden-mobile">
+      <div class="column is-3">${operacion.Descripción}</div>
+      <div class="column is-3">${operacion.Categoría}</div>
+      <div class="column is-2 has-text-right">${operacion.Fecha}</div>
+      <div class="column is-2 has-text-right">${operacion.Monto}</div>
+      <div class="column is-2 has-text-right">${operacion.Acciones}</div>
+    </div>
+    `
+  })
+
+  agregarMaquetadoOperaciones.innerHTML = acc
+}
+
+mostrarOperacionesEnHTML(operaciones)
+
+
 
 filtroTipo.onchange=()=>{
   const operacionesFiltradasporTipo=operaciones.filter((operaciones)=>{
@@ -310,21 +331,24 @@ filtroTipo.onchange=()=>{
 
   //console.log (filtroTipo.value)
   
-  seccionImagenSinResultado.style.display = 'none';
-  modalOperacionDetallada.style.display = 'flex';
+  //seccionImagenSinResultado.style.display = 'none';
+  //modalOperacionDetallada.style.display = 'flex';
 }
 
 filtroCategoria.onchange=()=>{
   const operacionesFiltradasporCategoria=operaciones.filter((operaciones)=>{
     return operaciones.categoria === filtroCategoria.value
   })
+
+  
   mostrarListadoOperaciones(operacionesFiltradasporCategoria);
 
   console.log (filtroCategoria.value)
   
-  seccionImagenSinResultado.style.display = 'none';
-  modalOperacionDetallada.style.display = 'flex';
+  //seccionImagenSinResultado.style.display = 'none';
+  //modalOperacionDetallada.style.display = 'flex';
 }
+
 
 
 
