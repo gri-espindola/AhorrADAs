@@ -108,7 +108,8 @@ agregarNuevaOperacion.addEventListener('click', () => {
 
 //"OPERACION DETALLADA"
 
-let operaciones = [];
+let operaciones = JSON.parse(localStorage.getItem("operaciones")) || [];
+
 
 modalOperacionDetallada.style.display = 'none';
 botonAgregar.addEventListener('click', () => {
@@ -130,7 +131,7 @@ modalNuevaOperacion.addEventListener('submit', (e) => {
   
   operaciones.push(OperacionNuevaObjeto);
   guardarEnLocalStorageGenerica('operaciones', operaciones)
-  mostrarListadoOperaciones();
+  mostrarListadoOperaciones(operaciones);
   seccionImagenSinResultado.style.display = 'none';
   seccionBalance.style.display = 'flex';
 
@@ -217,8 +218,8 @@ mostrarListadoCategorias = () => {
 
 
 
-const mostrarListadoOperaciones = () => {
-  htmlInicial = operaciones.reduce((acc, elemento, index) => {
+const mostrarListadoOperaciones = (arrayFiltrado) => {
+  htmlInicial = arrayFiltrado.reduce((acc, elemento, index) => {
     return (
       acc +
       `
