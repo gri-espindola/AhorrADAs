@@ -55,6 +55,14 @@ const modalOperacionDetallada = document.querySelector(
 );
 const operacionBoxCenter = document.querySelector('operaciones-center');
 
+//Alternar filtros
+const botonOcultarfiltros = document.querySelector('#boton-ocultar')
+const filtrosGenerales = document.querySelector('#filtrosGenerales') 
+//Funciones filtros 
+const filtroTipo=document.querySelector("#filtro-tipo")
+const filtroCategoria=document.querySelector("#filtro-categoria") 
+
+
 //*********************************************************************************//
 
 //Darle a las 3 display flex
@@ -279,28 +287,47 @@ const eliminarCategoria = (categoriaAEliminar) => {
 
   //Seccion filtros
 
-  //Alternar filtros
+  botonOcultarfiltros.addEventListener ('click', (e) => {
+    e.preventDefault();
+
+  if (botonOcultarfiltros.innerText === 'Ocultar Filtros') {
+      botonOcultarfiltros.innerText = 'Mostrar Filtros'
+      filtrosGenerales.classList.add('is-hidden')
+  } else {
+      botonOcultarfiltros.innerText = 'Ocultar Filtros'
+      filtrosGenerales.classList.remove('is-hidden')
+  }
+  }
+  )
   
-  
-    const botonOcultarfiltros = document.querySelector('#boton-ocultar')
-    const filtrosGenerales = document.querySelector('#filtrosGenerales')
-
-    botonOcultarfiltros.addEventListener ('click', (e) => {
-      e.preventDefault();
-
-    if (botonOcultarfiltros.innerText === 'Ocultar Filtros') {
-        botonOcultarfiltros.innerText = 'Mostrar Filtros'
-        filtrosGenerales.classList.add('is-hidden')
-    } else {
-        botonOcultarfiltros.innerText = 'Ocultar Filtros'
-        filtrosGenerales.classList.remove('is-hidden')
-    }
-    }
-    )
-
-
-
 //Funciones filtros
+
+
+filtroTipo.onchange=()=>{
+  const operacionesFiltradasporTipo=operaciones.filter((operaciones)=>{
+    return operaciones.tipo === filtroTipo.value
+  })
+  mostrarListadoOperaciones(operacionesFiltradasporTipo);
+
+  console.log (filtroTipo.value)
+  
+  seccionImagenSinResultado.style.display = 'none';
+  modalOperacionDetallada.style.display = 'flex';
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

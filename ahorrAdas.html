@@ -86,11 +86,12 @@
                         </div>
                        
                         <div id="filtrosGenerales">
+                            <div id="filtered">
                             <div class="field">
                                 <label class="label" for="">Tipo</label>
                             </div>
                             <div  class="select is-fullwidth">
-                                <select name="" id="">
+                                <select name="" id="filtro-tipo">
                                     <option value="Todos">Todos</option>
                                     <option value="Gasto">Gasto</option>
                                     <option value="Ganacia">Ganancia</option>
@@ -103,7 +104,7 @@
                                 <label for="" class="label">Categoría</label>
                             </div>
                             <div class="select is-fullwidth">    
-                                <select name="" id="">
+                                <select class="categoria-select" id="filtro-categoria">
                                     <option value="Comida">Comida</option>
                                     <option value="Servicios">Servicios</option>
                                     <option value="Salidas">Salidas</option>
@@ -118,7 +119,7 @@
                                 <label for="" class="label">Desde</label>
                             </div>
                             <div class="field">    
-                                <input type="date" class="input">
+                                <input type="date" class="input" id="start" >
                             </div>
                             
                             <!-- Ordenar por -->
@@ -126,7 +127,7 @@
                                 <label for="" class="label">Ordenar por</label>
                             </div>
                             <div class="select is-fullwidth">    
-                                <select name="" id="">
+                                <select class="ordenBalance" id="selectOrden">
                                     <option value="Mas recientes">Más recientes</option>
                                     <option value="Menos recientes">Menos recientes</option>
                                     <option value="Mayor monto">Mayor monto</option>
@@ -136,7 +137,8 @@
                                 </select>
                             </div>
                         </div>    
-                </div>     
+                </div> 
+                        </div>    
             </div>
     <!--************************************ BOX OPERACIONES **********************************-->
                 <div class="box column is-6 mt-3">
