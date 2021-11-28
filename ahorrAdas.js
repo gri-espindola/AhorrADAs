@@ -326,12 +326,16 @@ mostrarOperacionesEnHTML(operaciones)
 
 filtroTipo.onchange=()=>{
   const operacionesFiltradasporTipo=operaciones.filter((operaciones)=>{
+    if (filtroTipo.value === "Todos"){
+      return operaciones
+    }
     return operaciones.tipo === filtroTipo.value
     
       
   })
   mostrarListadoOperaciones(operacionesFiltradasporTipo);
   console.log (filtroTipo.value)
+  
 }
 
 filtroCategoria.onchange=()=>{
