@@ -300,8 +300,7 @@ const eliminarCategoria = (categoriaAEliminar) => {
   }
   )
   
-//Funciones filtros
-
+// Funcion filtros
 
 filtroTipo.onchange=()=>{
   const operacionesFiltradasporTipo=operaciones.filter((operaciones)=>{
@@ -309,11 +308,24 @@ filtroTipo.onchange=()=>{
   })
   mostrarListadoOperaciones(operacionesFiltradasporTipo);
 
-  console.log (filtroTipo.value)
+  //console.log (filtroTipo.value)
   
   seccionImagenSinResultado.style.display = 'none';
   modalOperacionDetallada.style.display = 'flex';
 }
+
+filtroCategoria.onchange=()=>{
+  const operacionesFiltradasporCategoria=operaciones.filter((operaciones)=>{
+    return operaciones.categoria === filtroCategoria.value
+  })
+  mostrarListadoOperaciones(operacionesFiltradasporCategoria);
+
+  console.log (filtroCategoria.value)
+  
+  seccionImagenSinResultado.style.display = 'none';
+  modalOperacionDetallada.style.display = 'flex';
+}
+
 
 
 
