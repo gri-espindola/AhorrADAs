@@ -57,13 +57,11 @@ const operacionBoxCenter = document.querySelector('operaciones-center');
 
 //Alternar filtros
 const botonOcultarfiltros = document.querySelector('#boton-ocultar')
-const filtrosGenerales = document.querySelector('#filtrosGenerales') 
+const filtrosGenerales = document.querySelector('#filtrosGenerales')
 //Funciones filtros 
-const filtroTipo=document.querySelector("#filtro-tipo")
-const filtroCategoria=document.querySelector("#filtro-categoria") 
+const filtroTipo = document.querySelector("#filtro-tipo")
+const filtroCategoria = document.querySelector("#filtro-categoria")
 
-
-//*********************************************************************************//
 
 //Darle a las 3 display flex
 seccionCategorias.style.display = 'none';
@@ -110,7 +108,6 @@ agregarNuevaOperacion.addEventListener('click', () => {
 
 let operaciones = JSON.parse(localStorage.getItem("operaciones")) || [];
 
-
 modalOperacionDetallada.style.display = 'none';
 botonAgregar.addEventListener('click', () => {
   modalOperacionDetallada.style.display = 'flex';
@@ -128,7 +125,7 @@ modalNuevaOperacion.addEventListener('submit', (e) => {
     monto: monto.value,
     tipo: tipo.value,
   };
-  
+
   operaciones.push(OperacionNuevaObjeto);
   guardarEnLocalStorageGenerica('operaciones', operaciones)
   mostrarListadoOperaciones(operaciones);
@@ -181,6 +178,7 @@ const guardarEnLocalStorage = () => {
 
 const guardarEnLocalStorageGenerica = (nombreJSON, objetoJson) => {
   localStorage.setItem(nombreJSON, JSON.stringify(objetoJson));
+  mostrarListadoOperaciones();
 };
 
 
@@ -218,14 +216,19 @@ mostrarListadoCategorias = () => {
 
 
 
-const mostrarListadoOperaciones = (arrayFiltrado) => {
-  htmlInicial = arrayFiltrado.reduce((acc, elemento, index) => {
-    return (
-      acc +
-      `
+const mostrarListadoOperaciones = () => {
+
+  if (operaciones.length > 0) {
+    seccionImagenSinResultado.style.display = 'none';
+    agregarMaquetadoOperaciones.style.display = 'block';
+    modalOperacionDetallada.style.display = 'block';
+    htmlInicial = operaciones.reduce((acc, elemento, index) => {
+      return (
+        acc +
+        `
       <div class="columns is-multiline is-mobile is-vcentered">
       <div class="column is-3-tablet is-6-mobile">
-          <h3 class="has-text-weight-semibold">${elemento.descripcion}</h3>
+          <h3 class="has-text-weight-semibold" id="textoOperacion">${elemento.descripcion}</h3>
       </div>
       <div class="column is-3-tablet is-6-mobile has-text-right-mobile">
           <span class="tag is-primary is-light">${elemento.categoria}</span>
@@ -240,28 +243,47 @@ const mostrarListadoOperaciones = (arrayFiltrado) => {
       </div>
       <div class="column is-2-tablet is-6-mobile has-text-right">
           <p class="is-fullwidth">
-              <a href="#" class="mr-3 is-size-7 edit-link">Editar</a>
-              <a href="#" class="is-size-7 delete-link">Eliminar</a>
+              <a href="#" class="mr-3 is-size-7 edit-link" id="boton-editar-${index}">Editar</a>
+              <a href="#" class="is-size-7 delete-link" id="boton-eliminar-${index}">Eliminar</a>
           </p>
       </div>
   </div>
     `
-    );
-  }, '');
-  agregarMaquetadoOperaciones.innerHTML = htmlInicial;
+      );
+    }, '');
+    agregarMaquetadoOperaciones.innerHTML = htmlInicial;
+  } else {
+    seccionImagenSinResultado.style.display = 'block';
+    agregarMaquetadoOperaciones.style.display = 'none';
+    modalOperacionDetallada.style.display = 'none';
+  }
+
+
+};
+// -------------------------------------BOTÓN EDITAR Y ELIMINAR OPERACIONES------------------------------------
+agregarMaquetadoOperaciones.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (e.target.innerHTML === 'Editar' || e.target.innerHTML === 'Eliminar') {
+    const texto = document.querySelector('#textoOperacion').innerText;
+    if (e.target.innerHTML === 'Editar') {
+      // aca va la funcion de editar
+    }
+    if (e.target.innerHTML === 'Eliminar') {
+      eliminarOperacion(texto);
+    }
+  }
+}
+);
+
+const eliminarOperacion = (texto) => {
+  const indexArray = operaciones.findIndex(
+    (operacion) => operacion.descripcion === texto
+  );
+  operaciones.splice(indexArray, 1);
+  guardarEnLocalStorageGenerica('operaciones', operaciones);
 };
 
-
-
-
-
-
-
-
-
-
-
-
+// ------------------------------------------BOTÓN EDITAR Y ELIMINAR CATEGORIAS------------------------------
 
 agregarMaquetadoCategorias.addEventListener('click', (e) => {
   e.preventDefault();
@@ -286,21 +308,21 @@ const eliminarCategoria = (categoriaAEliminar) => {
   guardarEnLocalStorage();
 };
 
-  //Seccion filtros
+//Seccion filtros
 
-  botonOcultarfiltros.addEventListener ('click', (e) => {
-    e.preventDefault();
+botonOcultarfiltros.addEventListener('click', (e) => {
+  e.preventDefault();
 
   if (botonOcultarfiltros.innerText === 'Ocultar Filtros') {
-      botonOcultarfiltros.innerText = 'Mostrar Filtros'
-      filtrosGenerales.classList.add('is-hidden')
+    botonOcultarfiltros.innerText = 'Mostrar Filtros'
+    filtrosGenerales.classList.add('is-hidden')
   } else {
-      botonOcultarfiltros.innerText = 'Ocultar Filtros'
-      filtrosGenerales.classList.remove('is-hidden')
+    botonOcultarfiltros.innerText = 'Ocultar Filtros'
+    filtrosGenerales.classList.remove('is-hidden')
   }
-  }
-  )
-  
+}
+)
+
 // Funcion filtros
 const mostrarOperacionesEnHTML = (array) => {
   let acc = ""
@@ -324,34 +346,34 @@ mostrarOperacionesEnHTML(operaciones)
 
 
 
-filtroTipo.onchange=()=>{
-  const operacionesFiltradasporTipo=operaciones.filter((operaciones)=>{
-    if (filtroTipo.value === "Todos"){
+filtroTipo.onchange = () => {
+  const operacionesFiltradasporTipo = operaciones.filter((operaciones) => {
+    if (filtroTipo.value === "Todos") {
       return operaciones
     }
     return operaciones.tipo === filtroTipo.value
-    
-      
+
+
   })
   mostrarListadoOperaciones(operacionesFiltradasporTipo);
-  console.log (filtroTipo.value)
-  
+  console.log(filtroTipo.value)
+
 }
 
-filtroCategoria.onchange=()=>{
-  const operacionesFiltradasporCategoria=operaciones.filter((operaciones)=>{
-    if (filtroCategoria.value === "Todas"){
-    return operaciones
+filtroCategoria.onchange = () => {
+  const operacionesFiltradasporCategoria = operaciones.filter((operaciones) => {
+    if (filtroCategoria.value === "Todas") {
+      return operaciones
     }
     return operaciones.categoria === filtroCategoria.value
   })
 
-  
+
   mostrarListadoOperaciones(operacionesFiltradasporCategoria);
 
-  console.log (filtroCategoria.value)
-  
-  
+  console.log(filtroCategoria.value)
+
+
 }
 
 
@@ -374,10 +396,26 @@ filtroCategoria.onchange=()=>{
 
 
 
-    
-  
 
-  
 
-  
-  
+//Seccion filtros
+
+const alternarFiltros = () => {
+  const botonOcultar = document.querySelector('#boton-ocultar')
+  const filtrosGenerales = document.querySelector('#filtrosGenerales')
+
+  if (botonOcultar.innerText === 'Ocultar Filtros') {
+    botonOcultar.innerText = 'Mostrar Filtros'
+    filtrosGenerales.classList.add('is-hidden')
+  } else {
+    botonOcultar.innerText = 'Ocultar Filtros'
+    filtrosGenerales.classList.remove('is-hidden')
+  }
+}
+
+
+
+
+
+
+
