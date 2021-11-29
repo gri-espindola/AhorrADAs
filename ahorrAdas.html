@@ -248,7 +248,7 @@
                 <div class="container column is-8 box is-centered mt-5">
                     <h1 class="title is-size-2 has-text-weight-bold">Categorías</h1>
                     <div class="field">
-                        <label for="" class="label title">Nombre</label>
+                        <label class="label title">Nombre</label>
                     </div>
                     <div class="columns">
                         <div class="column field is-10">
@@ -260,47 +260,37 @@
                             </button>
                         </div>
                     </div>
-                    <div class="columns">
-                        <div class="column is-12A" id="agregar-maquetado-categorias">
-                            <!--     <div class="mb-2">
-                        <option class="tag is-primary is-light" id="comida-edit-remove">Comida</option>
-                        </div>
-                        <div class="mb-2">
-                        <option class="tag is-primary is-light" id="servicios-edit-remove">Servicios</option>
-                        </div>
-                        <div class="mb-2">
-                        <option class="tag is-primary is-light" id="salidas-edit-remove">Salidas</option>
-                        </div>
-                        <div class="mb-2">
-                        <option class="tag is-primary is-light" id="educacion-edit-remove">Educación</option>
-                        </div>
-                        <div class="mb-2">
-                        <option class="tag is-primary is-light" id="transporte-edit-remove">Transporte</option>
-                        </div>
-                        <div class="mb-2">
-                        <option class="tag is-primary is-light" id="trabajo-edit-remove">Trabajo</option>
-                        </div>
+                <div class="columns">
+                    <div class="column is-12A" id="agregar-maquetado-categorias">
+                     <!-- Maquetado en JavaScript -->
                     </div>
-                    <div class="column is-1 is-offset-1">
-                        <button class="button is-ghost is-size-7" id="boton-editar-0">Editar</button>
-                        <button class="button is-ghost is-size-7" id="boton-editar-1">Editar</button>
-                        <button class="button is-ghost is-size-7" id="boton-editar-2">Editar</button>
-                        <button class="button is-ghost is-size-7" id="boton-editar-3">Editar</button>
-                        <button class="button is-ghost is-size-7" id="boton-editar-4">Editar</button>
-                        <button class="button is-ghost is-size-7" id="boton-editar-5">Editar</button>
+                </div>
+            </div>    
+        </section>
+
+<!-- *********************************Editar categoria************************************** -->
+        
+        <section class="column is-8 container box" id="section-editar-categoria">
+                <h1 class="title is-size-2 has-text-weight-bold">
+                    Editar categoría
+                </h1>
+                <label class="label mt-6">Nombre</label>
+                <div class="field is-grouped">
+                    <div class="control is-expanded">
+                        <input type="text" class="input is-fullwidth" id="">
                     </div>
-                    <div class="column is-1">
-                        <button class="button is-ghost is-size-7">Eliminar</button>
-                        <button class="button is-ghost is-size-7">Eliminar</button>
-                        <button class="button is-ghost is-size-7">Eliminar</button>
-                        <button class="button is-ghost is-size-7">Eliminar</button>
-                        <button class="button is-ghost is-size-7">Eliminar</button>
-                        <button class="button is-ghost is-size-7">Eliminar</button>
-                    </div> -->
-                        </div>
-                    </div>
-            </section>
-        </div>
+                </div>
+                <div class="buttons mt-6 navbar-end">
+                    <button class="button is-light" id="boton-editar-cancelar">
+                        Cancelar
+                    </button>
+                    <button class="button is-success" id="boton-editar-ok">
+                        Editar
+                    </button>
+                </div>
+        </section>
+
+    </div>
 
         <!--************************************ SECCIÓN REPORTES ********************************-->
         <section class="columns section vista" id="seccion-reportes">
@@ -317,6 +307,47 @@
                 </div>
             </div>
         </section>
+ <!--************************************ SECCIÓN Operacion-Detallada  ********************************-->
+ <section class="columns operaciones-contenedor"id="modal-operaciones-detalladas">
+    <div class=" container column is-7 is-centered mt-5 box">
+      <div class="column">
+        <h3 class="is-size-4 has-text-weight-bold">Operaciones</h3>
+      <div class="column has-text-right-tablet">
+        <button type="button" class="button is-primary" id="ver-operación">
+          + Nueva operación
+        </button>
+      </div>
+    </div>
+    <div id="operaciones-caracteristicas" class="">
+        <div class="columns has-text-weight-semibold is-hidden-mobile">
+          <div class="column is-3">Descripción</div>
+          <div class="column is-3">Categoría</div>
+          <div class="column is-2 has-text-right">Fecha</div>
+          <div class="column is-2 has-text-right">Monto</div>
+          <div class="column is-2 has-text-right">Acciones</div>
+        </div>
+        <div id="operaciones"><div class="mb-3">
+    <div class="columns is-multiline is-mobile is-vcentered">
+    <div class="column is-3-tablet is-6-mobile">
+        <h3 class="has-text-weight-semibold"></h3>
+    </div>
+    <div class="column is-3-tablet is-6-mobile has-text-right-mobile">
+    <span class="tag is-primary is-light">Comida</span>
+    </div>
+    <div class="column is-2-tablet has-text-grey is-hidden-mobile has-text-right-tablet">
+    14/11/2021
+    </div>
+    <div class="column is-2-tablet is-6-mobile has-text-weight-bold has-text-right-tablet is-size-4-mobile has-text-danger">
+    -$0
+    </div>
+    <div class="column is-2-tablet is-6-mobile has-text-right">
+    <p class="is-fullwidth">
+    <a href="#" class="mr-3 is-size-7 edit-link">Editar</a>
+    <a href="#" class="is-size-7 delete-link">Eliminar</a>
+    
+    </p>
+    </div>
+</section>
 
     </header>
 
