@@ -60,7 +60,10 @@ const botonOcultarfiltros = document.querySelector('#boton-ocultar')
 const filtrosGenerales = document.querySelector('#filtrosGenerales') 
 //Funciones filtros 
 const filtroTipo=document.querySelector("#filtro-tipo")
-const filtroCategoria=document.querySelector("#filtro-categoria") 
+const filtroCategoria=document.querySelector("#filtro-categoria")
+//Filtro fechas
+const filtroFecha = document.querySelector("#start")
+
 
 
 //*********************************************************************************//
@@ -354,6 +357,39 @@ filtroCategoria.onchange=()=>{
   
   
 }
+
+//Filtro Fecha
+
+
+const arrayFinalFecha= operaciones.map((operaciones)=>{
+ const nuevoElemento={...operaciones}
+  nuevoElemento.fecha=new Date (operaciones.fecha).toLocaleDateString
+  return nuevoElemento
+})
+
+console.log (arrayFinalFecha)
+
+
+
+arrayFinalFecha.sort((a,b)=>{
+  return new Date (a.fecha)-new Date (b.fecha)
+})
+ 
+
+filtroFecha.oninput = () => {
+  console.log(filtroFecha.value)
+}
+
+
+const fechaDeHoy = new Date()
+fecha.textContent = fechaDeHoy
+console.log(fechaDeHoy)
+
+
+
+
+
+
 
 
 
