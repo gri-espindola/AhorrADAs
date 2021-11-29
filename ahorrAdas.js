@@ -6,14 +6,16 @@ const botonReportes = document.querySelector('#boton-reportes');
 const seccionCategorias = document.querySelector('#seccion-categorias');
 const seccionBalance = document.querySelector('#seccion-balance');
 const seccionReportes = document.querySelector('#seccion-reportes');
-const seccionOperaciones = document.querySelector('seccion-operaciones-center');
-
+const seccionOperaciones = document.querySelector('#seccion-operaciones-center');
+const seccionImagenSinResultado = document.querySelector('#imagen-sin-resultado');
+const seccionBalanceYFiltro = document.querySelector('#seccion-balance-filtro')
 //BOTON DE MODALES
 const agregarNuevaOperacion = document.querySelector(
   '#agregar-nueva-operacion'
 );
 const botonCancelar = document.querySelector('#boton-cancelar');
 const botonAgregar = document.querySelector('#boton-agregar');
+
 
 // MODALES
 const modalNuevaOperacion = document.querySelector('#modal-nueva-operacion');
@@ -23,6 +25,9 @@ const descripcion = document.querySelector('#descripcion');
 const monto = document.querySelector('#monto');
 const tipo = document.querySelector('#tipo');
 const selectCategoria = document.querySelector('#select-categoria');
+const seleccionarFecha = document.querySelector('#fecha');
+
+
 
 //SECCION CATEGORIAS
 const botonAgregarCategoria = document.querySelector(
@@ -44,26 +49,27 @@ const editarEliminarTransporte = document.querySelector(
 );
 const editarEliminarTrabajo = document.querySelector('#trabajo-edit-remove');
 
-//Modal editar categoria
-
-const seccionEditarCategoria = document.querySelector('section-editar-categoria')
-const botonEditarCancelar = document.querySelector('boton-editar-cancelar')
-const botonEditarOk = document.querySelector('boton-editar-ok')
-
-
 //OPERACIONES DETALLADAS
 const modalOperacionDetallada = document.querySelector(
   '#modal-operaciones-detalladas'
 );
 const operacionBoxCenter = document.querySelector('operaciones-center');
 
+//Alternar filtros
+const botonOcultarfiltros = document.querySelector('#boton-ocultar')
+const filtrosGenerales = document.querySelector('#filtrosGenerales') 
+//Funciones filtros 
+const filtroTipo=document.querySelector("#filtro-tipo")
+const filtroCategoria=document.querySelector("#filtro-categoria") 
+
+
 //*********************************************************************************//
 
-//Ocultando y mostrando secciones
+//Darle a las 3 display flex
 seccionCategorias.style.display = 'none';
 seccionBalance.style.display = 'flex';
 seccionReportes.style.display = 'none';
-seccionEditarCategoria.style.display = 'none'
+
 
 botonCategorias.addEventListener('click', () => {
   categorias = obtenerLocalStorage();
@@ -102,22 +108,44 @@ agregarNuevaOperacion.addEventListener('click', () => {
 
 //"OPERACION DETALLADA"
 
-modalOperacionDetallada.style.display = 'none';
+let operaciones = JSON.parse(localStorage.getItem("operaciones")) || [];
 
+
+modalOperacionDetallada.style.display = 'none';
 botonAgregar.addEventListener('click', () => {
   modalOperacionDetallada.style.display = 'flex';
   modalNuevaOperacion.style.display = 'none';
-  seccionOperaciones.style.display = 'none';
 });
 
 modalNuevaOperacion.addEventListener('submit', (e) => {
   e.preventDefault();
+
+  const OperacionNuevaObjeto = {
+    categoria: selectCategoria.value,
+    descripcion: descripcion.value,
+    fecha: fecha.value,
+    id: '',
+    monto: monto.value,
+    tipo: tipo.value,
+  };
+  
+  operaciones.push(OperacionNuevaObjeto);
+  guardarEnLocalStorageGenerica('operaciones', operaciones)
+  mostrarListadoOperaciones(operaciones);
+  seccionImagenSinResultado.style.display = 'none';
+  seccionBalance.style.display = 'flex';
+
 });
+
+
 
 //seccion categorias
 
 const agregarMaquetadoCategorias = document.querySelector(
   '#agregar-maquetado-categorias'
+);
+const agregarMaquetadoOperaciones = document.querySelector(
+  '#grilla-operaciones'
 );
 
 
@@ -149,6 +177,12 @@ const guardarEnLocalStorage = () => {
   localStorage.setItem('categorias', JSON.stringify(categorias));
   mostrarListadoCategorias();
 };
+
+
+const guardarEnLocalStorageGenerica = (nombreJSON, objetoJson) => {
+  localStorage.setItem(nombreJSON, JSON.stringify(objetoJson));
+};
+
 
 const obtenerLocalStorage = () => {
   categoriasLocalStorage = JSON.parse(localStorage.getItem('categorias'));
@@ -182,37 +216,168 @@ mostrarListadoCategorias = () => {
   agregarMaquetadoCategorias.innerHTML = htmlInicial;
 };
 
-  agregarMaquetadoCategorias.addEventListener('click', (e) => {
-    e.preventDefault();
-  
-    if (e.target.innerHTML === 'Editar' || e.target.innerHTML === 'Eliminar') {
-      let textoCategoria = e.path[2].childNodes[1].innerText;
-      if (e.target.innerHTML === 'Editar') {
-        // aca va la funcion de editar
-      }
-      if (e.target.innerHTML === 'Eliminar') {
-        eliminarCategoria(textoCategoria);
-        }
-      }
+
+
+const mostrarListadoOperaciones = (arrayFiltrado) => {
+  htmlInicial = arrayFiltrado.reduce((acc, elemento, index) => {
+    return (
+      acc +
+      `
+      <div class="columns is-multiline is-mobile is-vcentered">
+      <div class="column is-3-tablet is-6-mobile">
+          <h3 class="has-text-weight-semibold">${elemento.descripcion}</h3>
+      </div>
+      <div class="column is-3-tablet is-6-mobile has-text-right-mobile">
+          <span class="tag is-primary is-light">${elemento.categoria}</span>
+      </div>
+      <div
+          class="column is-2-tablet has-text-grey is-hidden-mobile has-text-right-tablet">
+          ${elemento.fecha}
+      </div>
+      <div
+          class="column is-2-tablet is-6-mobile has-text-weight-bold has-text-right-tablet is-size-4-mobile has-text-danger">
+          ${elemento.monto}
+      </div>
+      <div class="column is-2-tablet is-6-mobile has-text-right">
+          <p class="is-fullwidth">
+              <a href="#" class="mr-3 is-size-7 edit-link">Editar</a>
+              <a href="#" class="is-size-7 delete-link">Eliminar</a>
+          </p>
+      </div>
+  </div>
+    `
+    );
+  }, '');
+  agregarMaquetadoOperaciones.innerHTML = htmlInicial;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+agregarMaquetadoCategorias.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  if (e.target.innerHTML === 'Editar' || e.target.innerHTML === 'Eliminar') {
+    let textoCategoria = e.path[2].childNodes[1].innerText;
+    if (e.target.innerHTML === 'Editar') {
+      // aca va la funcion de editar
     }
-  ); 
+    if (e.target.innerHTML === 'Eliminar') {
+      eliminarCategoria(textoCategoria);
+    }
+  }
+}
+);
 
-  const eliminarCategoria = (categoriaAEliminar) => {
-    const indexArray = categorias.findIndex(
-      (categoria) => categoria === categoriaAEliminar
-    );
-    categorias.splice(indexArray, 1);
-    guardarEnLocalStorage();
-  };
+const eliminarCategoria = (categoriaAEliminar) => {
+  const indexArray = categorias.findIndex(
+    (categoria) => categoria === categoriaAEliminar
+  );
+  categorias.splice(indexArray, 1);
+  guardarEnLocalStorage();
+};
+
+  //Seccion filtros
+
+  botonOcultarfiltros.addEventListener ('click', (e) => {
+    e.preventDefault();
+
+  if (botonOcultarfiltros.innerText === 'Ocultar Filtros') {
+      botonOcultarfiltros.innerText = 'Mostrar Filtros'
+      filtrosGenerales.classList.add('is-hidden')
+  } else {
+      botonOcultarfiltros.innerText = 'Ocultar Filtros'
+      filtrosGenerales.classList.remove('is-hidden')
+  }
+  }
+  )
   
-  const editarCategoria = (categoriaAEditar) => {
-    const indexArray = categorias.findIndex(
-      (categoria) => categoria === categoriaAEditar
-    );
-    categorias.splice(indexArray, 1);
-    guardarEnLocalStorage();
-  };
+// Funcion filtros
+const mostrarOperacionesEnHTML = (array) => {
+  let acc = ""
 
-  //modal editar
+  array.map((operacion) => {
+    acc = acc + `
+    <div class="columns has-text-weight-semibold is-hidden-mobile">
+      <div class="column is-3">${operacion.Descripción}</div>
+      <div class="column is-3">${operacion.Categoría}</div>
+      <div class="column is-2 has-text-right">${operacion.Fecha}</div>
+      <div class="column is-2 has-text-right">${operacion.Monto}</div>
+      <div class="column is-2 has-text-right">${operacion.Acciones}</div>
+    </div>
+    `
+  })
 
+  agregarMaquetadoOperaciones.innerHTML = acc
+}
+
+mostrarOperacionesEnHTML(operaciones)
+
+
+
+filtroTipo.onchange=()=>{
+  const operacionesFiltradasporTipo=operaciones.filter((operaciones)=>{
+    if (filtroTipo.value === "Todos"){
+      return operaciones
+    }
+    return operaciones.tipo === filtroTipo.value
+    
+      
+  })
+  mostrarListadoOperaciones(operacionesFiltradasporTipo);
+  console.log (filtroTipo.value)
+  
+}
+
+filtroCategoria.onchange=()=>{
+  const operacionesFiltradasporCategoria=operaciones.filter((operaciones)=>{
+    if (filtroCategoria.value === "Todas"){
+    return operaciones
+    }
+    return operaciones.categoria === filtroCategoria.value
+  })
+
+  
+  mostrarListadoOperaciones(operacionesFiltradasporCategoria);
+
+  console.log (filtroCategoria.value)
+  
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  
+
+  
+
+  
   
