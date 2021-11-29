@@ -10,9 +10,7 @@ const seccionOperaciones = document.querySelector('#seccion-operaciones-center')
 const seccionImagenSinResultado = document.querySelector('#imagen-sin-resultado');
 const seccionBalanceYFiltro = document.querySelector('#seccion-balance-filtro')
 //BOTON DE MODALES
-const agregarNuevaOperacion = document.querySelector(
-  '#agregar-nueva-operacion'
-);
+const agregarNuevaOperacion = document.querySelector('#agregar-nueva-operacion');
 const botonCancelar = document.querySelector('#boton-cancelar');
 const botonAgregar = document.querySelector('#boton-agregar');
 
@@ -56,12 +54,13 @@ const modalOperacionDetallada = document.querySelector(
 const operacionBoxCenter = document.querySelector('operaciones-center');
 
 //Alternar filtros
-const botonOcultarfiltros = document.querySelector('#boton-ocultar')
-const filtrosGenerales = document.querySelector('#filtrosGenerales')
+const botonOcultarfiltros = document.querySelector('#boton-ocultar');
+const filtrosGenerales = document.querySelector('#filtrosGenerales');
 //Funciones filtros 
-const filtroTipo = document.querySelector("#filtro-tipo")
-const filtroCategoria = document.querySelector("#filtro-categoria")
-
+const filtroTipo = document.querySelector("#filtro-tipo");
+const filtroCategoria = document.querySelector("#filtro-categoria");
+const filtroFecha = document.querySelector("#filtro-fecha");
+const filtroOrdenar= document.querySelector("#filtro-ordenar");
 
 //Darle a las 3 display flex
 seccionCategorias.style.display = 'none';
@@ -132,6 +131,7 @@ modalNuevaOperacion.addEventListener('submit', (e) => {
   seccionImagenSinResultado.style.display = 'none';
   seccionBalance.style.display = 'flex';
 
+
 });
 
 
@@ -178,7 +178,7 @@ const guardarEnLocalStorage = () => {
 
 const guardarEnLocalStorageGenerica = (nombreJSON, objetoJson) => {
   localStorage.setItem(nombreJSON, JSON.stringify(objetoJson));
-  mostrarListadoOperaciones();
+  mostrarListadoOperaciones(operaciones);
 };
 
 
@@ -216,13 +216,13 @@ mostrarListadoCategorias = () => {
 
 
 
-const mostrarListadoOperaciones = () => {
+const mostrarListadoOperaciones = (arrayFiltrado) => {
 
   if (operaciones.length > 0) {
     seccionImagenSinResultado.style.display = 'none';
     agregarMaquetadoOperaciones.style.display = 'block';
     modalOperacionDetallada.style.display = 'block';
-    htmlInicial = operaciones.reduce((acc, elemento, index) => {
+    htmlInicial = arrayFiltrado.reduce((acc, elemento, index) => {
       return (
         acc +
         `
@@ -266,7 +266,7 @@ agregarMaquetadoOperaciones.addEventListener('click', (e) => {
   if (e.target.innerHTML === 'Editar' || e.target.innerHTML === 'Eliminar') {
     const texto = document.querySelector('#textoOperacion').innerText;
     if (e.target.innerHTML === 'Editar') {
-      // aca va la funcion de editar
+      //FUNCIÓN EDITAR
     }
     if (e.target.innerHTML === 'Eliminar') {
       eliminarOperacion(texto);
@@ -308,7 +308,7 @@ const eliminarCategoria = (categoriaAEliminar) => {
   guardarEnLocalStorage();
 };
 
-//Seccion filtros
+//-----------------------------------------BOTÓN OCULTAR FILTROS-------------------------------------------------------------
 
 botonOcultarfiltros.addEventListener('click', (e) => {
   e.preventDefault();
@@ -323,7 +323,7 @@ botonOcultarfiltros.addEventListener('click', (e) => {
 }
 )
 
-// Funcion filtros
+//-------------------------------------------------------FUNCIÓN DE FILTROS-----------------------------------------------------------------
 const mostrarOperacionesEnHTML = (array) => {
   let acc = ""
 
@@ -355,14 +355,14 @@ filtroTipo.onchange = () => {
 
 
   })
-  mostrarListadoOperaciones(operacionesFiltradasporTipo);
+ mostrarListadoOperaciones(operacionesFiltradasporTipo);
   console.log(filtroTipo.value)
 
 }
 
 filtroCategoria.onchange = () => {
   const operacionesFiltradasporCategoria = operaciones.filter((operaciones) => {
-    if (filtroCategoria.value === "Todas") {
+    if (filtroCategoria.value === "Todos") {
       return operaciones
     }
     return operaciones.categoria === filtroCategoria.value
@@ -376,39 +376,46 @@ filtroCategoria.onchange = () => {
 
 }
 
+filtroFecha.onchange = () => {
+  const operacionesFiltradasporTipo = operaciones.filter((operaciones) => {
+    if (filtroFecha.value === "Todos") {
+      return operaciones
+    }
+    return operaciones.tipo === filtroFecha.value
 
 
+  })
+ mostrarListadoOperaciones(operacionesFiltradasporTipo);
+  console.log(filtroFecha.value)
+
+}
+
+filtroOrdenar.onchange = () => {
+  const operacionesFiltradasporCategoria = operaciones.filter((operaciones) => {
+    if (filtroOrdenar.value === "Todos") {
+      return operaciones
+    }
+    return operaciones.categoria === filtroOrdenar.value
+  })
 
 
+  mostrarListadoOperaciones(operacionesFiltradasporCategoria);
+
+  console.log(filtro.value)
 
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Seccion filtros
+// -----------------------------------------------SECCIÓN FILTROS-----------------------------------------------------------------------
 
 const alternarFiltros = () => {
   const botonOcultar = document.querySelector('#boton-ocultar')
   const filtrosGenerales = document.querySelector('#filtrosGenerales')
 
   if (botonOcultar.innerText === 'Ocultar Filtros') {
-    botonOcultar.innerText = 'Mostrar Filtros'
     filtrosGenerales.classList.add('is-hidden')
   } else {
-    botonOcultar.innerText = 'Ocultar Filtros'
+    botonOcultar.innerText = 'Mostrar Filtros'
     filtrosGenerales.classList.remove('is-hidden')
   }
 }
