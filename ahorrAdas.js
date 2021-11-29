@@ -331,6 +331,7 @@ filtroTipo.onchange=()=>{
     }
     return operaciones.tipo === filtroTipo.value
     
+    
       
   })
   mostrarListadoOperaciones(operacionesFiltradasporTipo);
