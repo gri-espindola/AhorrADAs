@@ -419,7 +419,29 @@ filtroOrdenar.onchange = () => {
 //     filtrosGenerales.classList.remove('is-hidden')
 //   }
 // }
+// -----------------------------------------------SECCIÓN BALANCE------------------------------------------------------------------------
+function actualizarDatosBalance() {
+  let operacionesLocalStorage =getlocalStorage('operaciones')
+  let Gastos = 0;
+  let Ganancias = 0;
+  let Total = 0;
 
+  for (let i = 0; i < operacionesLocalStorage.length; i++) {
+    const element = operacionesLocalStorage[i];
+
+    if (element.tipo.toLowerCase() === 'Ganancias') {
+      Ganancias += element.Monto;
+    } else {
+      Gastos += element.Monto;
+    }
+    Total = Ganancias - Gastos;
+  }
+
+  document.getElementById('gastoTotal').innerText = `$${Total}`;
+  document.getElementById('gananciaValor').innerText = `+$${Ganancias}`;
+  document.getElementById('gastoValor').innerText = `-$${Gastos}`;
+
+}
 
 
 
