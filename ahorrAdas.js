@@ -362,7 +362,7 @@ filtroTipo.onchange = () => {
 
 filtroCategoria.onchange = () => {
   const operacionesFiltradasporCategoria = operaciones.filter((operaciones) => {
-    if (filtroCategoria.value === "Todos") {
+    if (filtroCategoria.value === "Todas") {
       return operaciones
     }
     return operaciones.categoria === filtroCategoria.value
@@ -408,17 +408,17 @@ filtroOrdenar.onchange = () => {
 
 // -----------------------------------------------SECCIÓN FILTROS-----------------------------------------------------------------------
 
-const alternarFiltros = () => {
-  const botonOcultar = document.querySelector('#boton-ocultar')
-  const filtrosGenerales = document.querySelector('#filtrosGenerales')
+// const alternarFiltros = () => {
+//   const botonOcultar = document.querySelector('#boton-ocultar')
+//   const filtrosGenerales = document.querySelector('#filtrosGenerales')
 
-  if (botonOcultar.innerText === 'Ocultar Filtros') {
-    filtrosGenerales.classList.add('is-hidden')
-  } else {
-    botonOcultar.innerText = 'Mostrar Filtros'
-    filtrosGenerales.classList.remove('is-hidden')
-  }
-}
+//   if (botonOcultar.innerText === 'Ocultar Filtros') {
+//     filtrosGenerales.classList.add('is-hidden')
+//   } else {
+//     botonOcultar.innerText = 'Mostrar Filtros'
+//     filtrosGenerales.classList.remove('is-hidden')
+//   }
+// }
 
 
 
