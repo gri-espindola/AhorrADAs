@@ -2,6 +2,7 @@
 const botonCategorias = document.querySelector('#boton-categorias');
 const botonBalance = document.querySelector('#boton-balance');
 const botonReportes = document.querySelector('#boton-reportes');
+
 //secciones
 const seccionCategorias = document.querySelector('#seccion-categorias');
 const seccionBalance = document.querySelector('#seccion-balance');
@@ -9,16 +10,18 @@ const seccionReportes = document.querySelector('#seccion-reportes');
 const seccionOperaciones = document.querySelector('#seccion-operaciones-center');
 const seccionImagenSinResultado = document.querySelector('#imagen-sin-resultado');
 const seccionBalanceYFiltro = document.querySelector('#seccion-balance-filtro')
+
 //BOTON DE MODALES
-const agregarNuevaOperacion = document.querySelector(
-  '#agregar-nueva-operacion'
-);
+const agregarNuevaOperacion = document.querySelector('#agregar-nueva-operacion');
 const botonCancelar = document.querySelector('#boton-cancelar');
 const botonAgregar = document.querySelector('#boton-agregar');
-
+const InputEditarCategorias = document.querySelector ('#input-editar-categorias');
+const botonEditarCancelar = document.querySelector ('#boton-editar-cancelar');
+const botonEditarOk = document.querySelector ('#boton-editar-ok')
 
 // MODALES
 const modalNuevaOperacion = document.querySelector('#modal-nueva-operacion');
+const seccionEditarCategoria = document.querySelector('#seccion-editar-categoria')
 
 // INPUTS DE MI MODAL "+Nueva operacion"
 const descripcion = document.querySelector('#descripcion');
@@ -30,20 +33,12 @@ const seleccionarFecha = document.querySelector('#fecha');
 
 
 //SECCION CATEGORIAS
-const botonAgregarCategoria = document.querySelector(
-  '#boton-agregar-categoria'
-);
-const inputAgregarCategoria = document.querySelector(
-  '#input-agregar-categoria'
-);
+const botonAgregarCategoria = document.querySelector('#boton-agregar-categoria');
+const inputAgregarCategoria = document.querySelector('#input-agregar-categoria');
 const editarEliminarComida = document.querySelector('#comida-edit-remove');
-const editarEliminarServicios = document.querySelector(
-  '#servicios-edit-remove'
-);
+const editarEliminarServicios = document.querySelector('#servicios-edit-remove');
 const editarEliminarSalidas = document.querySelector('#salidas-edit-remove');
-const editarEliminarEducacion = document.querySelector(
-  '#educacion-edit-remove'
-);
+const editarEliminarEducacion = document.querySelector('#educacion-edit-remove');
 const editarEliminarTransporte = document.querySelector(
   '#transporte-edit-remove'
 );
@@ -58,6 +53,7 @@ const operacionBoxCenter = document.querySelector('operaciones-center');
 //Alternar filtros
 const botonOcultarfiltros = document.querySelector('#boton-ocultar')
 const filtrosGenerales = document.querySelector('#filtrosGenerales') 
+
 //Funciones filtros 
 const filtroTipo=document.querySelector("#filtro-tipo")
 const filtroCategoria=document.querySelector("#filtro-categoria") 
@@ -65,7 +61,8 @@ const filtroCategoria=document.querySelector("#filtro-categoria")
 
 //*********************************************************************************//
 
-//Darle a las 3 display flex
+//NavBar
+
 seccionCategorias.style.display = 'none';
 seccionBalance.style.display = 'flex';
 seccionReportes.style.display = 'none';
@@ -96,47 +93,6 @@ botonReportes.addEventListener('click', () => {
   seccionCategorias.style.display = 'none';
   modalNuevaOperacion.style.display = 'none';
 });
-
-//"+NUEVA OPERACION"
-
-modalNuevaOperacion.style.display = 'none';
-
-agregarNuevaOperacion.addEventListener('click', () => {
-  modalNuevaOperacion.style.display = 'flex';
-  seccionBalance.style.display = 'none';
-});
-
-//"OPERACION DETALLADA"
-
-let operaciones = JSON.parse(localStorage.getItem("operaciones")) || [];
-
-
-modalOperacionDetallada.style.display = 'none';
-botonAgregar.addEventListener('click', () => {
-  modalOperacionDetallada.style.display = 'flex';
-  modalNuevaOperacion.style.display = 'none';
-});
-
-modalNuevaOperacion.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  const OperacionNuevaObjeto = {
-    categoria: selectCategoria.value,
-    descripcion: descripcion.value,
-    fecha: fecha.value,
-    id: '',
-    monto: monto.value,
-    tipo: tipo.value,
-  };
-  
-  operaciones.push(OperacionNuevaObjeto);
-  guardarEnLocalStorageGenerica('operaciones', operaciones)
-  mostrarListadoOperaciones(operaciones);
-  seccionImagenSinResultado.style.display = 'none';
-  seccionBalance.style.display = 'flex';
-
-});
-
 
 
 //seccion categorias
@@ -216,6 +172,87 @@ mostrarListadoCategorias = () => {
   agregarMaquetadoCategorias.innerHTML = htmlInicial;
 };
 
+agregarMaquetadoCategorias.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  if (e.target.innerHTML === 'Editar' || e.target.innerHTML === 'Eliminar') {
+    let textoCategoria = e.path[2].childNodes[1].innerText;
+    if (e.target.innerHTML === 'Editar') {
+      // aca va la funcion de editar
+    }
+    if (e.target.innerHTML === 'Eliminar') {
+      eliminarCategoria(textoCategoria);
+    }
+  }
+}
+);
+
+const eliminarCategoria = (categoriaAEliminar) => {
+  const indexArray = categorias.findIndex(
+    (categoria) => categoria === categoriaAEliminar
+  );
+  categorias.splice(indexArray, 1);
+  guardarEnLocalStorage();
+};
+
+//Funcion editar categorias
+
+inputAgregarCategoria.addEventListener ('input', (e) => {
+  const inputPrueba = 'prueba input'
+  console.log (inputPrueba)
+})
+
+botonEditarCancelar.addEventListener ('click', (e) => {
+  const prueba = 'boton cancelar anda'
+  console.log(prueba)
+})
+
+botonEditarOk.addEventListener ('click', (e) => {
+  const pruebaDos = 'boton editar ok anda'
+  console.log (pruebaDos)
+} )
+
+// Operaciones
+
+//"+NUEVA OPERACION"
+
+modalNuevaOperacion.style.display = 'none';
+
+agregarNuevaOperacion.addEventListener('click', () => {
+  modalNuevaOperacion.style.display = 'flex';
+  seccionBalance.style.display = 'none';
+});
+
+//"OPERACION DETALLADA"
+
+let operaciones = JSON.parse(localStorage.getItem("operaciones")) || [];
+
+
+modalOperacionDetallada.style.display = 'none';
+botonAgregar.addEventListener('click', () => {
+  modalOperacionDetallada.style.display = 'flex';
+  modalNuevaOperacion.style.display = 'none';
+});
+
+modalNuevaOperacion.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const OperacionNuevaObjeto = {
+    categoria: selectCategoria.value,
+    descripcion: descripcion.value,
+    fecha: fecha.value,
+    id: '',
+    monto: monto.value,
+    tipo: tipo.value,
+  };
+  
+  operaciones.push(OperacionNuevaObjeto);
+  guardarEnLocalStorageGenerica('operaciones', operaciones)
+  mostrarListadoOperaciones(operaciones);
+  seccionImagenSinResultado.style.display = 'none';
+  seccionBalance.style.display = 'flex';
+
+});
 
 
 const mostrarListadoOperaciones = (arrayFiltrado) => {
@@ -252,41 +289,7 @@ const mostrarListadoOperaciones = (arrayFiltrado) => {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-agregarMaquetadoCategorias.addEventListener('click', (e) => {
-  e.preventDefault();
-
-  if (e.target.innerHTML === 'Editar' || e.target.innerHTML === 'Eliminar') {
-    let textoCategoria = e.path[2].childNodes[1].innerText;
-    if (e.target.innerHTML === 'Editar') {
-      // aca va la funcion de editar
-    }
-    if (e.target.innerHTML === 'Eliminar') {
-      eliminarCategoria(textoCategoria);
-    }
-  }
-}
-);
-
-const eliminarCategoria = (categoriaAEliminar) => {
-  const indexArray = categorias.findIndex(
-    (categoria) => categoria === categoriaAEliminar
-  );
-  categorias.splice(indexArray, 1);
-  guardarEnLocalStorage();
-};
-
-  //Seccion filtros
+//Seccion filtros
 
   botonOcultarfiltros.addEventListener ('click', (e) => {
     e.preventDefault();
