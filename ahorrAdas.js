@@ -377,11 +377,12 @@ filtroCategoria.onchange = () => {
 }
 
 filtroFecha.onchange = () => {
+  debugger
   const operacionesFiltradasporTipo = operaciones.filter((operaciones) => {
     if (filtroFecha.value === "Todos") {
       return operaciones
     }
-    return operaciones.tipo === filtroFecha.value
+    return operaciones.fecha === filtroFecha.value
 
 
   })
@@ -390,21 +391,7 @@ filtroFecha.onchange = () => {
 
 }
 
-filtroOrdenar.onchange = () => {
-  const operacionesFiltradasporCategoria = operaciones.filter((operaciones) => {
-    if (filtroOrdenar.value === "Todos") {
-      return operaciones
-    }
-    return operaciones.categoria === filtroOrdenar.value
-  })
 
-
-  mostrarListadoOperaciones(operacionesFiltradasporCategoria);
-
-  console.log(filtro.value)
-
-
-}
 
 // -----------------------------------------------SECCIÓN FILTROS-----------------------------------------------------------------------
 
