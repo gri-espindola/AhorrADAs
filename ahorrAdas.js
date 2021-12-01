@@ -1,167 +1,184 @@
 //botones de las secciones
-const botonCategorias = document.querySelector('#boton-categorias');
-const botonBalance = document.querySelector('#boton-balance');
-const botonReportes = document.querySelector('#boton-reportes');
+const botonCategorias = document.querySelector("#boton-categorias");
+const botonBalance = document.querySelector("#boton-balance");
+const botonReportes = document.querySelector("#boton-reportes");
 //secciones
-const seccionCategorias = document.querySelector('#seccion-categorias');
-const seccionBalance = document.querySelector('#seccion-balance');
-const seccionReportes = document.querySelector('#seccion-reportes');
-const seccionOperaciones = document.querySelector('#seccion-operaciones-center');
-const seccionImagenSinResultado = document.querySelector('#imagen-sin-resultado');
-const seccionBalanceYFiltro = document.querySelector('#seccion-balance-filtro')
+const seccionCategorias = document.querySelector("#seccion-categorias");
+const seccionBalance = document.querySelector("#seccion-balance");
+const seccionReportes = document.querySelector("#seccion-reportes");
+const seccionOperaciones = document.querySelector(
+  "#seccion-operaciones-center"
+);
+const seccionImagenSinResultado = document.querySelector(
+  "#imagen-sin-resultado"
+);
+const seccionBalanceYFiltro = document.querySelector("#seccion-balance-filtro");
 //BOTON DE MODALES
-const agregarNuevaOperacion = document.querySelector('#agregar-nueva-operacion');
-const botonCancelar = document.querySelector('#boton-cancelar');
-const botonAgregar = document.querySelector('#boton-agregar');
-
+const agregarNuevaOperacion = document.querySelector(
+  "#agregar-nueva-operacion"
+);
+const botonCancelar = document.querySelector("#boton-cancelar");
+const botonAgregar = document.querySelector("#boton-agregar");
 
 // MODALES
-const modalNuevaOperacion = document.querySelector('#modal-nueva-operacion');
-
-// INPUTS DE MI MODAL "+Nueva operacion"
-const descripcion = document.querySelector('#descripcion');
-const monto = document.querySelector('#monto');
-const tipo = document.querySelector('#tipo');
-const selectCategoria = document.querySelector('#select-categoria');
-const seleccionarFecha = document.querySelector('#fecha');
-
-
+const modalNuevaOperacion = document.querySelector("#modal-nueva-operacion");
+const modalEditarCategoria = document.querySelector("#modal-editar-categoria");
 
 //SECCION CATEGORIAS
 const botonAgregarCategoria = document.querySelector(
-  '#boton-agregar-categoria'
+  "#boton-agregar-categoria"
 );
 const inputAgregarCategoria = document.querySelector(
-  '#input-agregar-categoria'
+  "#input-agregar-categoria"
 );
-const editarEliminarComida = document.querySelector('#comida-edit-remove');
+const editarEliminarComida = document.querySelector("#comida-edit-remove");
 const editarEliminarServicios = document.querySelector(
-  '#servicios-edit-remove'
+  "#servicios-edit-remove"
 );
-const editarEliminarSalidas = document.querySelector('#salidas-edit-remove');
+const editarEliminarSalidas = document.querySelector("#salidas-edit-remove");
 const editarEliminarEducacion = document.querySelector(
-  '#educacion-edit-remove'
+  "#educacion-edit-remove"
 );
 const editarEliminarTransporte = document.querySelector(
-  '#transporte-edit-remove'
+  "#transporte-edit-remove"
 );
-const editarEliminarTrabajo = document.querySelector('#trabajo-edit-remove');
+const editarEliminarTrabajo = document.querySelector("#trabajo-edit-remove");
 
 //OPERACIONES DETALLADAS
 const modalOperacionDetallada = document.querySelector(
-  '#modal-operaciones-detalladas'
+  "#modal-operaciones-detalladas"
 );
-const operacionBoxCenter = document.querySelector('operaciones-center');
+const operacionBoxCenter = document.querySelector("operaciones-center");
+
 
 // --------------------------------------ALTERNAR FILTROS----------------------------------------------------
 const botonOcultarfiltros = document.querySelector('#boton-ocultar');
 const filtrosGenerales = document.querySelector('#filtrosGenerales');
 // ----------------------------------FUNCIONES FILTROS--------------------------------------------------------
+
 const filtroTipo = document.querySelector("#filtro-tipo");
 const filtroCategoria = document.querySelector("#filtro-categoria");
 const filtroFecha = document.querySelector("#filtro-fecha");
-const filtroOrdenar= document.querySelector("#filtro-ordenar");
+const filtroOrdenar = document.querySelector("#filtro-ordenar");
 
 //Darle a las 3 display flex
-seccionCategorias.style.display = 'none';
-seccionBalance.style.display = 'flex';
-seccionReportes.style.display = 'none';
+seccionCategorias.style.display = "none";
+seccionBalance.style.display = "flex";
+seccionReportes.style.display = "none";
+modalEditarCategoria.style.display = "none";
 
-
-botonCategorias.addEventListener('click', () => {
+botonCategorias.addEventListener("click", () => {
   categorias = obtenerLocalStorage();
   mostrarListadoCategorias(categorias);
-
-  seccionCategorias.style.display = 'flex';
-  seccionBalance.style.display = 'none';
-  seccionReportes.style.display = 'none';
-  modalNuevaOperacion.style.display = 'none';
+  seccionCategorias.style.display = "flex";
+  seccionBalance.style.display = "none";
+  seccionReportes.style.display = "none";
+  modalNuevaOperacion.style.display = "none";
+  modalEditarCategoria.style.display = "none";
 });
 
-botonBalance.addEventListener('click', () => {
+botonBalance.addEventListener("click", () => {
   categorias = obtenerLocalStorage();
-  seccionBalance.style.display = 'flex';
-  seccionCategorias.style.display = 'none';
-  seccionReportes.style.display = 'none';
-  modalNuevaOperacion.style.display = 'none';
+  seccionBalance.style.display = "flex";
+  seccionCategorias.style.display = "none";
+  seccionReportes.style.display = "none";
+  modalNuevaOperacion.style.display = "none";
+  modalEditarCategoria.style.display = "none";
 });
 
-botonReportes.addEventListener('click', () => {
+botonReportes.addEventListener("click", () => {
   categorias = obtenerLocalStorage();
-  seccionReportes.style.display = 'flex';
-  seccionBalance.style.display = 'none';
-  seccionCategorias.style.display = 'none';
-  modalNuevaOperacion.style.display = 'none';
+  seccionReportes.style.display = "flex";
+  seccionBalance.style.display = "none";
+  seccionCategorias.style.display = "none";
+  modalNuevaOperacion.style.display = "none";
+  modalEditarCategoria.style.display = "none";
 });
 
 //"+NUEVA OPERACION"
 
-modalNuevaOperacion.style.display = 'none';
+modalNuevaOperacion.style.display = "none";
 
-agregarNuevaOperacion.addEventListener('click', () => {
-  modalNuevaOperacion.style.display = 'flex';
-  seccionBalance.style.display = 'none';
+agregarNuevaOperacion.addEventListener("click", () => {
+  modalNuevaOperacion.style.display = "flex";
+  seccionBalance.style.display = "none";
 });
 
 //"OPERACION DETALLADA"
 
 let operaciones = JSON.parse(localStorage.getItem("operaciones")) || [];
 
-modalOperacionDetallada.style.display = 'none';
-botonAgregar.addEventListener('click', () => {
-  modalOperacionDetallada.style.display = 'flex';
-  modalNuevaOperacion.style.display = 'none';
+modalOperacionDetallada.style.display = "none";
+botonAgregar.addEventListener("click", () => {
+  modalOperacionDetallada.style.display = "flex";
+  modalNuevaOperacion.style.display = "none";
 });
 
-modalNuevaOperacion.addEventListener('submit', (e) => {
+modalNuevaOperacion.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const OperacionNuevaObjeto = {
     categoria: selectCategoria.value,
     descripcion: descripcion.value,
     fecha: fecha.value,
-    id: '',
+    id: "",
     monto: monto.value,
     tipo: tipo.value,
   };
 
   operaciones.push(OperacionNuevaObjeto);
-  guardarEnLocalStorageGenerica('operaciones', operaciones)
+  guardarEnLocalStorageGenerica("operaciones", operaciones);
   mostrarListadoOperaciones(operaciones);
-  seccionImagenSinResultado.style.display = 'none';
-  seccionBalance.style.display = 'flex';
-
-
+  seccionImagenSinResultado.style.display = "none";
+  seccionBalance.style.display = "flex";
 });
 
+// INPUTS DE MI MODAL "Input Modal editar Categoria"
+const inputCategoria = document.querySelector("#input-categoria");
+const botonCancelarCategoria = document.querySelector(
+  "#boton-cancelar-en-modal-categoria"
+);
+const botonEditarCategoria = document.querySelector(
+  "#boton-editar-en-modal-categoria"
+);
 
+botonCancelarCategoria.addEventListener("click", (e) => {
+  e.preventDefault();
+  ocultarModal();
+});
+
+// INPUTS DE MI MODAL "+Nueva operacion"
+const descripcion = document.querySelector("#descripcion");
+const monto = document.querySelector("#monto");
+const tipo = document.querySelector("#tipo");
+const selectCategoria = document.querySelector("#select-categoria");
+const seleccionarFecha = document.querySelector("#fecha");
 
 //seccion categorias
 
 const agregarMaquetadoCategorias = document.querySelector(
-  '#agregar-maquetado-categorias'
+  "#agregar-maquetado-categorias"
 );
 const agregarMaquetadoOperaciones = document.querySelector(
-  '#grilla-operaciones'
+  "#grilla-operaciones"
 );
 
-
 let categorias = [
-  'Comida',
-  'Servicios',
-  'Salidas',
-  'Educación',
-  'Transporte',
-  'Trabajo',
+  "Comida",
+  "Servicios",
+  "Salidas",
+  "Educación",
+  "Transporte",
+  "Trabajo",
 ];
 
-botonAgregarCategoria.addEventListener('click', (e) => {
+botonAgregarCategoria.addEventListener("click", (e) => {
   e.preventDefault();
   valorDelInput = inputAgregarCategoria.value;
   if (!valorDelInput) {
     return;
   }
-  inputAgregarCategoria.value = '';
+  inputAgregarCategoria.value = "";
   crearCategoria(valorDelInput);
   guardarEnLocalStorage();
 });
@@ -171,19 +188,17 @@ const crearCategoria = (categoria) => {
 };
 
 const guardarEnLocalStorage = () => {
-  localStorage.setItem('categorias', JSON.stringify(categorias));
+  localStorage.setItem("categorias", JSON.stringify(categorias));
   mostrarListadoCategorias();
 };
-
 
 const guardarEnLocalStorageGenerica = (nombreJSON, objetoJson) => {
   localStorage.setItem(nombreJSON, JSON.stringify(objetoJson));
   mostrarListadoOperaciones(operaciones);
 };
 
-
 const obtenerLocalStorage = () => {
-  categoriasLocalStorage = JSON.parse(localStorage.getItem('categorias'));
+  categoriasLocalStorage = JSON.parse(localStorage.getItem("categorias"));
   if (categoriasLocalStorage) {
     categorias = categoriasLocalStorage;
   }
@@ -210,18 +225,15 @@ mostrarListadoCategorias = () => {
     </div>
     `
     );
-  }, '');
+  }, "");
   agregarMaquetadoCategorias.innerHTML = htmlInicial;
 };
 
-
-
 const mostrarListadoOperaciones = (arrayFiltrado) => {
-
   if (operaciones.length > 0) {
-    seccionImagenSinResultado.style.display = 'none';
-    agregarMaquetadoOperaciones.style.display = 'block';
-    modalOperacionDetallada.style.display = 'block';
+    seccionImagenSinResultado.style.display = "none";
+    agregarMaquetadoOperaciones.style.display = "block";
+    modalOperacionDetallada.style.display = "block";
     htmlInicial = arrayFiltrado.reduce((acc, elemento, index) => {
       return (
         acc +
@@ -250,55 +262,67 @@ const mostrarListadoOperaciones = (arrayFiltrado) => {
   </div>
     `
       );
-    }, '');
+    }, "");
     agregarMaquetadoOperaciones.innerHTML = htmlInicial;
   } else {
-    seccionImagenSinResultado.style.display = 'block';
-    agregarMaquetadoOperaciones.style.display = 'none';
-    modalOperacionDetallada.style.display = 'none';
+    seccionImagenSinResultado.style.display = "block";
+    agregarMaquetadoOperaciones.style.display = "none";
+    modalOperacionDetallada.style.display = "none";
   }
-
-
 };
 // -------------------------------------BOTÓN EDITAR Y ELIMINAR OPERACIONES------------------------------------
-agregarMaquetadoOperaciones.addEventListener('click', (e) => {
+agregarMaquetadoOperaciones.addEventListener("click", (e) => {
   e.preventDefault();
-  if (e.target.innerHTML === 'Editar' || e.target.innerHTML === 'Eliminar') {
-    const texto = document.querySelector('#textoOperacion').innerText;
-    if (e.target.innerHTML === 'Editar') {
+  if (e.target.innerHTML === "Editar" || e.target.innerHTML === "Eliminar") {
+    const texto = document.querySelector("#textoOperacion").innerText;
+    if (e.target.innerHTML === "Editar") {
       //FUNCIÓN EDITAR
     }
-    if (e.target.innerHTML === 'Eliminar') {
+    if (e.target.innerHTML === "Eliminar") {
       eliminarOperacion(texto);
     }
   }
-}
-);
+});
 
 const eliminarOperacion = (texto) => {
   const indexArray = operaciones.findIndex(
     (operacion) => operacion.descripcion === texto
   );
   operaciones.splice(indexArray, 1);
-  guardarEnLocalStorageGenerica('operaciones', operaciones);
+  guardarEnLocalStorageGenerica("operaciones", operaciones);
 };
 
 // ------------------------------------------BOTÓN EDITAR Y ELIMINAR CATEGORIAS------------------------------
 
-agregarMaquetadoCategorias.addEventListener('click', (e) => {
+agregarMaquetadoCategorias.addEventListener("click", (e) => {
   e.preventDefault();
 
-  if (e.target.innerHTML === 'Editar' || e.target.innerHTML === 'Eliminar') {
+  if (e.target.innerHTML === "Editar" || e.target.innerHTML === "Eliminar") {
     let textoCategoria = e.path[2].childNodes[1].innerText;
-    if (e.target.innerHTML === 'Editar') {
-      // aca va la funcion de editar
+    if (e.target.innerHTML === "Editar") {
+      mostrarModal();
+      botonEditarCategoria.addEventListener("click", (e) => {
+        e.preventDefault();
+        console.log(inputCategoria.value);
+        editarCategoria(textoCategoria, inputCategoria.value);
+        ocultarModal();
+      });
     }
-    if (e.target.innerHTML === 'Eliminar') {
+    if (e.target.innerHTML === "Eliminar") {
       eliminarCategoria(textoCategoria);
     }
   }
-}
-);
+});
+
+const mostrarModal = () => {
+  seccionCategorias.style.display = "none";
+  modalEditarCategoria.style.display = "flex";
+};
+
+const ocultarModal = () => {
+  seccionCategorias.style.display = "flex";
+  modalEditarCategoria.style.display = "none";
+};
 
 const eliminarCategoria = (categoriaAEliminar) => {
   const indexArray = categorias.findIndex(
@@ -308,27 +332,36 @@ const eliminarCategoria = (categoriaAEliminar) => {
   guardarEnLocalStorage();
 };
 
+const editarCategoria = (categoriaAEditar, nuevoValor) => {
+  const indexArray = categorias.findIndex(
+    (categoria) => categoria === categoriaAEditar
+  );
+  categorias[indexArray] = nuevoValor;
+  guardarEnLocalStorage();
+};
+
 //-----------------------------------------BOTÓN OCULTAR FILTROS-------------------------------------------------------------
 
-botonOcultarfiltros.addEventListener('click', (e) => {
+botonOcultarfiltros.addEventListener("click", (e) => {
   e.preventDefault();
 
-  if (botonOcultarfiltros.innerText === 'Ocultar Filtros') {
-    botonOcultarfiltros.innerText = 'Mostrar Filtros'
-    filtrosGenerales.classList.add('is-hidden')
+  if (botonOcultarfiltros.innerText === "Ocultar Filtros") {
+    botonOcultarfiltros.innerText = "Mostrar Filtros";
+    filtrosGenerales.classList.add("is-hidden");
   } else {
-    botonOcultarfiltros.innerText = 'Ocultar Filtros'
-    filtrosGenerales.classList.remove('is-hidden')
+    botonOcultarfiltros.innerText = "Ocultar Filtros";
+    filtrosGenerales.classList.remove("is-hidden");
   }
-}
-)
+});
 
 //-------------------------------------------------------FUNCIÓN DE FILTROS-----------------------------------------------------------------
 const mostrarOperacionesEnHTML = (array) => {
-  let acc = ""
+  let acc = "";
 
   array.map((operacion) => {
-    acc = acc + `
+    acc =
+      acc +
+      `
     <div class="columns has-text-weight-semibold is-hidden-mobile">
       <div class="column is-3">${operacion.Descripción}</div>
       <div class="column is-3">${operacion.Categoría}</div>
@@ -336,50 +369,42 @@ const mostrarOperacionesEnHTML = (array) => {
       <div class="column is-2 has-text-right">${operacion.Monto}</div>
       <div class="column is-2 has-text-right">${operacion.Acciones}</div>
     </div>
-    `
-  })
+    `;
+  });
 
-  agregarMaquetadoOperaciones.innerHTML = acc
-}
+  agregarMaquetadoOperaciones.innerHTML = acc;
+};
 
-mostrarOperacionesEnHTML(operaciones)
-
-
+mostrarOperacionesEnHTML(operaciones);
 
 filtroTipo.onchange = () => {
   const operacionesFiltradasporTipo = operaciones.filter((operaciones) => {
     if (filtroTipo.value === "Todos") {
-      return operaciones
+      return operaciones;
     }
-    return operaciones.tipo === filtroTipo.value
-
-
-  })
- mostrarListadoOperaciones(operacionesFiltradasporTipo);
-  console.log(filtroTipo.value)
-
-}
+    return operaciones.tipo === filtroTipo.value;
+  });
+  mostrarListadoOperaciones(operacionesFiltradasporTipo);
+  console.log(filtroTipo.value);
+};
 
 filtroCategoria.onchange = () => {
   const operacionesFiltradasporCategoria = operaciones.filter((operaciones) => {
     if (filtroCategoria.value === "Todas") {
-      return operaciones
+      return operaciones;
     }
-    return operaciones.categoria === filtroCategoria.value
-  })
-
+    return operaciones.categoria === filtroCategoria.value;
+  });
 
   mostrarListadoOperaciones(operacionesFiltradasporCategoria);
 
-  console.log(filtroCategoria.value)
-
-
-}
+  console.log(filtroCategoria.value);
+};
 
 filtroFecha.onchange = () => {
   const operacionesFiltradasporTipo = operaciones.filter((operaciones) => {
     if (filtroFecha.value === "Todos") {
-      return operaciones
+      return operaciones;
     }
     return operaciones.fecha === filtroFecha.value
 
@@ -419,6 +444,7 @@ debugger
  mostrarListadoOperaciones(operaciones)
 }
 
+
 const ordernarFecha = (operaciones, orden) => {
   debugger
   return [...operaciones].sort((a, b) => {
@@ -447,4 +473,5 @@ const ordernarDescripcion = (operaciones, orden) => {
   return [...operaciones].sort((a, b) => {
   })
 }
+
 
