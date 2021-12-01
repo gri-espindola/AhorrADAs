@@ -53,10 +53,10 @@ const modalOperacionDetallada = document.querySelector(
 );
 const operacionBoxCenter = document.querySelector('operaciones-center');
 
-//Alternar filtros
+// --------------------------------------ALTERNAR FILTROS----------------------------------------------------
 const botonOcultarfiltros = document.querySelector('#boton-ocultar');
 const filtrosGenerales = document.querySelector('#filtrosGenerales');
-//Funciones filtros 
+// ----------------------------------FUNCIONES FILTROS--------------------------------------------------------
 const filtroTipo = document.querySelector("#filtro-tipo");
 const filtroCategoria = document.querySelector("#filtro-categoria");
 const filtroFecha = document.querySelector("#filtro-fecha");
@@ -377,7 +377,6 @@ filtroCategoria.onchange = () => {
 }
 
 filtroFecha.onchange = () => {
-  debugger
   const operacionesFiltradasporTipo = operaciones.filter((operaciones) => {
     if (filtroFecha.value === "Todos") {
       return operaciones
@@ -391,25 +390,61 @@ filtroFecha.onchange = () => {
 
 }
 
+// ----------------------------------------------FUNCIÓN DE FILTRO "ORDENAR POR"--------------------------------
+ filtroOrdenar.onchange = () => {
+ 
+debugger
+  switch (filtroOrdenar.value) {
+    case 'mas-recientes':
+      operaciones = ordernarFecha(operaciones, 'descendente')
+      break
+    case 'menos-recientes':
+      operaciones = ordernarFecha(operaciones, 'ascendente')
+      break
+    case 'mayor-monto':
+      operaciones = ordernarMonto(operaciones, 'descendente')
+      break
+    case 'menor-monto':
+      operaciones = ordernarMonto(operaciones, 'ascendente')
+      break
+    case 'creciente':
+      operaciones = ordernarDescripcion(operaciones, 'ascendente')
+      break
+    case 'decreciente':
+      operaciones = ordernarDescripcion(operaciones, 'descendente')
+      break
+    default:
+  }
 
+ mostrarListadoOperaciones(operaciones)
+}
 
-// -----------------------------------------------SECCIÓN FILTROS-----------------------------------------------------------------------
+const ordernarFecha = (operaciones, orden) => {
+  debugger
+  return [...operaciones].sort((a, b) => {
+    const fechaA = new Date(a.fecha)
+    const fechaB = new Date(b.fecha)
+    return orden === 'ascendente'
+      ? fechaA.getTime() - fechaB.getTime()
+      : fechaB.getTime() - fechaA.getTime()
+  })
+}
 
-// const alternarFiltros = () => {
-//   const botonOcultar = document.querySelector('#boton-ocultar')
-//   const filtrosGenerales = document.querySelector('#filtrosGenerales')
+const ordernarMonto = (operaciones, orden) => {
+  return [...operaciones].sort((a, b) => {
+    return orden === 'ascendente' ? a.monto - b.monto : b.monto - a.monto
+  })
+}
 
-//   if (botonOcultar.innerText === 'Ocultar Filtros') {
-//     filtrosGenerales.classList.add('is-hidden')
-//   } else {
-//     botonOcultar.innerText = 'Mostrar Filtros'
-//     filtrosGenerales.classList.remove('is-hidden')
-//   }
-// }
-
-
-
-
-
-
+const ordernarDescripcion = (operaciones, orden) => {
+  debugger
+  if (orden === 'ascendente') {
+  
+    operaciones.sort((a, b) => (a.descripcion > b.descripcion) ? 1 : -1)
+  } else {
+    operaciones.sort((a, b) => (a.descripcion < b.descripcion) ? 1 : -1)
+  }
+  return [...operaciones].sort((a, b) => {
+  })
+}
 
