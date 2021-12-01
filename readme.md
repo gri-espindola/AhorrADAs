@@ -18,5 +18,4 @@
 ![imagen](/img/img-proyectofinal.png)
 ****
 #### Gracias a [Malena Rey](https://github.com/malerey)  💌 pudimos realizar este proyecto.
-***
 #### También gracias a las chicas de la 9na generación Frontend.📱 
