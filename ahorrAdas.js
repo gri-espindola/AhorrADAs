@@ -292,6 +292,7 @@ const eliminarOperacion = (texto) => {
 
 // ------------------------------------------BOTÓN EDITAR Y ELIMINAR CATEGORIAS------------------------------
 
+
 agregarMaquetadoCategorias.addEventListener("click", (e) => {
   e.preventDefault();
 
