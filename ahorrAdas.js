@@ -442,7 +442,6 @@ debugger
  mostrarListadoOperaciones(operaciones)
 }
 
-<<<<<<< HEAD
 // -----------------------------------------------SECCIÓN FILTROS-----------------------------------------------------------------------
 
 // const alternarFiltros = () => {
@@ -458,6 +457,7 @@ debugger
 // }
 // -----------------------------------------------SECCIÓN BALANCE------------------------------------------------------------------------
 function actualizarDatosBalance() {
+  debugger
   let operacionesLocalStorage =getlocalStorage('operaciones')
   let Gastos = 0;
   let Ganancias = 0;
@@ -467,9 +467,9 @@ function actualizarDatosBalance() {
     const element = operacionesLocalStorage[i];
 
     if (element.tipo.toLowerCase() === 'Ganancias') {
-      Ganancias += element.Monto;
+      Ganancias += element.monto;
     } else {
-      Gastos += element.Monto;
+      Gastos += element.monto;
     }
     Total = Ganancias - Gastos;
   }
@@ -481,18 +481,6 @@ function actualizarDatosBalance() {
 }
 
 
-=======
-const ordernarFecha = (operaciones, orden) => {
-  debugger
-  return [...operaciones].sort((a, b) => {
-    const fechaA = new Date(a.fecha)
-    const fechaB = new Date(b.fecha)
-    return orden === 'ascendente'
-      ? fechaA.getTime() - fechaB.getTime()
-      : fechaB.getTime() - fechaA.getTime()
-  })
-}
->>>>>>> a40c07cad8f60d1817dfb80616357af643958ef4
 
 const ordernarMonto = (operaciones, orden) => {
   return [...operaciones].sort((a, b) => {
