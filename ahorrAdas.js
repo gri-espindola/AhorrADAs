@@ -104,6 +104,8 @@ const agregarMaquetadoOperaciones = document.querySelector(
   '#grilla-operaciones'
 );
 
+seccionEditarCategoria.style.display = 'none';
+
 
 let categorias = [
   'Comida',
@@ -178,7 +180,11 @@ agregarMaquetadoCategorias.addEventListener('click', (e) => {
   if (e.target.innerHTML === 'Editar' || e.target.innerHTML === 'Eliminar') {
     let textoCategoria = e.path[2].childNodes[1].innerText;
     if (e.target.innerHTML === 'Editar') {
-      // aca va la funcion de editar
+      seccionEditarCategoria.style.display = 'flex';
+      seccionCategorias.style.display = 'flex';
+      seccionBalance.style.display = 'none';
+      seccionReportes.style.display = 'none';
+      modalNuevaOperacion.style.display = 'none';
     }
     if (e.target.innerHTML === 'Eliminar') {
       eliminarCategoria(textoCategoria);
@@ -197,20 +203,30 @@ const eliminarCategoria = (categoriaAEliminar) => {
 
 //Funcion editar categorias
 
-inputAgregarCategoria.addEventListener ('input', (e) => {
-  const inputPrueba = 'prueba input'
-  console.log (inputPrueba)
-})
+/* botonEditarCancelar.addEventListener('click', (e) => {
+  e.preventDefault();
+  valorDelInputEditar = inputEditarCategorias.value; 
+  if (valorDelInputEditar) {
+    return false;
+  }
+}); */
 
-botonEditarCancelar.addEventListener ('click', (e) => {
-  const prueba = 'boton cancelar anda'
-  console.log(prueba)
-})
+//que aparezca solo cuando clickeo el boton editar boton-editar-${index}
 
-botonEditarOk.addEventListener ('click', (e) => {
-  const pruebaDos = 'boton editar ok anda'
-  console.log (pruebaDos)
-} )
+// const botonEditarIndex = querySelector ('#boton-editar-${index}') //como se incluye aca el index?
+
+// botonEditarCancelar.addEventListener ('click', (e) => {
+//   seccionEditarCategoria.style.display = 'none';
+//   seccionCategorias.style.display = 'flex';
+//   seccionBalance.style.display = 'none';
+//   seccionReportes.style.display = 'none';
+//   modalNuevaOperacion.style.display = 'none';
+// })
+
+// botonEditarOk.addEventListener ('click', (e) => {
+//   const pruebaDos = 'boton editar ok anda'
+//   console.log (pruebaDos)
+// } )
 
 // Operaciones
 
