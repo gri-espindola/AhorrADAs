@@ -400,7 +400,6 @@ filtroCategoria.onchange = () => {
 };
 
 filtroFecha.onchange = () => {
-
   const operacionesFiltradasporTipo = operaciones.filter((operaciones) => {
     if (filtroFecha.value === "Todos") {
       return operaciones;
