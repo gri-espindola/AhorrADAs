@@ -60,7 +60,11 @@
                         <h2 class="title has-text-weight-bold">Balance</h2>
                         <!-- column ganancias -->
                         <div class="columns">
+<<<<<<< HEAD
                             <h3 class="column is-5 is-size-5"id="ganaciaValor">Ganacias</h3>
+=======
+                            <h3 class="column is-5 is-size-5">Ganancias</h3>
+>>>>>>> a40c07cad8f60d1817dfb80616357af643958ef4
                             <p class="column is-5 is-offset-2 has-text-right has-text-success mt-1">+$0</p>
                         </div>
                         <!-- column gastos -->
@@ -91,7 +95,7 @@
                                 <label class="label" for="">Tipo</label>
                             </div>
                             <div class="select is-fullwidth">
-                                <select name="" id="filtro-tipo">
+                                <select  id="filtro-tipo">
                                     <option value="Todos">Todos</option>
                                     <option value="Gasto">Gasto</option>
                                     <option value="Ganancias">Ganancias</option>
@@ -119,22 +123,22 @@
                             <div class="field">
                                 <label for="" class="label">Desde</label>
                             </div>
-                            <div class="field" id="filtro-fecha">
-                                <input type="date" class="input">
+                            <div class="field">
+                                <input type="date" class="input" id="filtro-fecha">
                             </div>
 
                             <!-- Ordenar por -->
-                            <div class="field" id="filtro-ordenar">
+                            <div class="field">
                                 <label for="" class="label">Ordenar por</label>
                             </div>
                             <div class="select is-fullwidth">
-                                <select name="" id="">
-                                    <option value="Mas recientes">Más recientes</option>
-                                    <option value="Menos recientes">Menos recientes</option>
-                                    <option value="Mayor monto">Mayor monto</option>
-                                    <option value="Menor monto">Menor monto</option>
-                                    <option value="A/Z">A/Z</option>
-                                    <option value="Z/A">Z/A</option>
+                                <select  id="filtro-ordenar">
+                                    <option value="mas-recientes">Más recientes</option>
+                                    <option value="menos-recientes">Menos recientes</option>
+                                    <option value="mayor-monto">Mayor monto</option>
+                                    <option value="menor-monto">Menor monto</option>
+                                    <option value="creciente">A/Z</option>
+                                    <option value="decreciente">Z/A</option>
                                 </select>
                             </div>
                         </div>
@@ -200,17 +204,17 @@
                         </div>
                         <div class="mb-3">
                             <label class="label">Descripción</label>
-                            <input type="text" class="input" id="descripcion">
+                            <input  type="text" class="input" id="descripcion">
                         </div>
                         <div class="mb-3">
                             <label class="label">Monto</label>
-                            <input type="text" class="input" id="monto">
+                            <input  type="text" class="input" id="monto">
                         </div>
                         <div class="mb-3">
                             <label class="label">Tipo</label>
                         </div>
                         <div class="select is-fullwidth mb-3">
-                            <select name="" id="tipo">
+                            <select id="tipo">
                                 <option value="Gasto">Gasto</option>
                                 <option value="Ganancias">Ganancias</option>
                             </select>
@@ -219,7 +223,7 @@
                             <label class="label">Categoría</label>
                         </div>
                         <div class="select is-fullwidth mb-3">
-                            <select name="" id="select-categoria">
+                            <select id="select-categoria">
                                 <option value="Comida">Comida</option>
                                 <option value="Servicios">Servicios</option>
                                 <option value="Salidas">Salidas</option>
@@ -242,9 +246,27 @@
                 </div>
             </form>
 
+             <!--*************** MODAL "EDITAR CATEGORIA" *******************-->
 
+            <form class="columns is-centered mt-6" id="modal-editar-categoria">
+                <div class="box column is-7">
+                    <div class="column is-offset-desktop">
+                        <div class="mb-3">
+                            <h1 class="tittle is-size-2 has-text-weight-bold">Editar Categoria</h1>
+                        </div>
+                        <div class="mb-3">
+                            <label class="label">Categoria</label>
+                            <input type="text" class="input" id="input-categoria">
+                        </div>
+                        <div class="navbar-end mt-6">
+                            <button class="button is-light" id="boton-cancelar-en-modal-categoria">Cancelar</button>
+                            <button class="button is-success ml-2" id="boton-editar-en-modal-categoria">Editar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
             <!--************************************ SECCIÓN CATEGORIAS **********************************-->
-            <section class="columns section vista" id="seccion-categorias">
+             <section class="columns section vista" id="seccion-categorias">
                 <div class="container column is-8 box is-centered mt-5">
                     <h1 class="title is-size-2 has-text-weight-bold">Categorías</h1>
                     <div class="field">
@@ -262,44 +284,11 @@
                     </div>
                     <div class="columns">
                         <div class="column is-12A" id="agregar-maquetado-categorias">
-                            <!--     <div class="mb-2">
-                        <option class="tag is-primary is-light" id="comida-edit-remove">Comida</option>
-                        </div>
-                        <div class="mb-2">
-                        <option class="tag is-primary is-light" id="servicios-edit-remove">Servicios</option>
-                        </div>
-                        <div class="mb-2">
-                        <option class="tag is-primary is-light" id="salidas-edit-remove">Salidas</option>
-                        </div>
-                        <div class="mb-2">
-                        <option class="tag is-primary is-light" id="educacion-edit-remove">Educación</option>
-                        </div>
-                        <div class="mb-2">
-                        <option class="tag is-primary is-light" id="transporte-edit-remove">Transporte</option>
-                        </div>
-                        <div class="mb-2">
-                        <option class="tag is-primary is-light" id="trabajo-edit-remove">Trabajo</option>
-                        </div>
-                    </div>
-                    <div class="column is-1 is-offset-1">
-                        <button class="button is-ghost is-size-7" id="boton-editar-0">Editar</button>
-                        <button class="button is-ghost is-size-7" id="boton-editar-1">Editar</button>
-                        <button class="button is-ghost is-size-7" id="boton-editar-2">Editar</button>
-                        <button class="button is-ghost is-size-7" id="boton-editar-3">Editar</button>
-                        <button class="button is-ghost is-size-7" id="boton-editar-4">Editar</button>
-                        <button class="button is-ghost is-size-7" id="boton-editar-5">Editar</button>
-                    </div>
-                    <div class="column is-1">
-                        <button class="button is-ghost is-size-7">Eliminar</button>
-                        <button class="button is-ghost is-size-7">Eliminar</button>
-                        <button class="button is-ghost is-size-7">Eliminar</button>
-                        <button class="button is-ghost is-size-7">Eliminar</button>
-                        <button class="button is-ghost is-size-7">Eliminar</button>
-                        <button class="button is-ghost is-size-7">Eliminar</button>
-                    </div> -->
+                      <!-- MAQUETADO EL JAVASCRIPT -->
                         </div>
                     </div>
             </section>
+
         </div>
 
         <!--************************************ SECCIÓN REPORTES ********************************-->
