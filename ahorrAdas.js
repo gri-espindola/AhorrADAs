@@ -431,15 +431,32 @@ function actualizarDatosBalance() {
 }
 
 // -----------------------------------------------SECCIÓN REPORTES------------------------------------------------------------------------
-
+// declarar las const sin reportes y con reportes
 const HTMLResumenReportes = () => {
-  const categoriasFiltradas = arrayinputUsuario.map((elemento) => {
+  const categoriasFiltradas = arrayFiltrado.map((elemento) => {
       return elemento.categoria
   })
 
   const categoriasEnUso = categoriasFiltradas.filter((elemento, index) => {
       return categoriasFiltradas.indexOf(elemento) === index
   })
+}
+const mostrarReporte = () => {
+  const mostrarReporteGanancia = arrayFiltrado.some((elemento) => {
+      return elemento.tipo === "ganancia"
+  })
+  const mostrarReporteGasto = arrayFiltrado.some((elemento) => {
+      return elemento.tipo === "gasto"
+  })
+  if (mostrarReporteGanancia === true && mostrarReporteGasto === true) {
+      sinReportes.classList.add("is-hidden")
+      conReportes.classList.remove("is-hidden")
+      HTMLResumenReportes()
+  }
+  else {
+      conReportes.classList.add("is-hidden")
+      sinReportes.classList.remove("is-hidden")
+  }
 }
 
 
