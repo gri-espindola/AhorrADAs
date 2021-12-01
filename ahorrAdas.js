@@ -430,8 +430,17 @@ function actualizarDatosBalance() {
 
 }
 
+// -----------------------------------------------SECCIÓN REPORTES------------------------------------------------------------------------
 
+const HTMLResumenReportes = () => {
+  const categoriasFiltradas = arrayinputUsuario.map((elemento) => {
+      return elemento.categoria
+  })
 
+  const categoriasEnUso = categoriasFiltradas.filter((elemento, index) => {
+      return categoriasFiltradas.indexOf(elemento) === index
+  })
+}
 
 
 
