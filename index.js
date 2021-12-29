@@ -6,17 +6,20 @@ const botonReportes = document.querySelector("#boton-reportes");
 const seccionCategorias = document.querySelector("#seccion-categorias");
 const seccionBalance = document.querySelector("#seccion-balance");
 const seccionReportes = document.querySelector("#seccion-reportes");
+// nunca usan esta variable: mejor borrarla
 const seccionOperaciones = document.querySelector(
   "#seccion-operaciones-center"
 );
 const seccionImagenSinResultado = document.querySelector(
   "#imagen-sin-resultado"
 );
+// nunca usan esta variable: mejor borrarla
 const seccionBalanceYFiltro = document.querySelector("#seccion-balance-filtro");
 //BOTON DE MODALES
 const agregarNuevaOperacion = document.querySelector(
   "#agregar-nueva-operacion"
 );
+// nunca usan esta variable: mejor borrarla
 const botonCancelar = document.querySelector("#boton-cancelar");
 const botonAgregar = document.querySelector("#boton-agregar");
 
@@ -31,6 +34,7 @@ const botonAgregarCategoria = document.querySelector(
 const inputAgregarCategoria = document.querySelector(
   "#input-agregar-categoria"
 );
+// nunca usan las variables que siguen: mejor borrarlas
 const editarEliminarComida = document.querySelector("#comida-edit-remove");
 const editarEliminarServicios = document.querySelector(
   "#servicios-edit-remove"
@@ -115,10 +119,12 @@ botonAgregar.addEventListener("click", () => {
 modalNuevaOperacion.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  // no comiencen con mayuscula los nombres de variables
   const OperacionNuevaObjeto = {
     categoria: selectCategoria.value,
     descripcion: descripcion.value,
     fecha: fecha.value,
+    // para que usan el id?
     id: "",
     monto: monto.value,
     tipo: tipo.value,
@@ -171,7 +177,9 @@ let categorias = [
 ];
 
 botonAgregarCategoria.addEventListener("click", (e) => {
+  // no es necesario esto, solo se usa en formularios
   e.preventDefault();
+  // falta un const aqui
   valorDelInput = inputAgregarCategoria.value;
   if (!valorDelInput) {
     return;
@@ -179,6 +187,7 @@ botonAgregarCategoria.addEventListener("click", (e) => {
   inputAgregarCategoria.value = "";
   crearCategoria(valorDelInput);
   guardarEnLocalStorage();
+  // aqui deberiamos actualizar los select que usamos en crear operacion y en filtrado
 });
 
 const crearCategoria = (categoria) => {
@@ -196,6 +205,7 @@ const guardarEnLocalStorageGenerica = (nombreJSON, objetoJson) => {
 };
 
 const obtenerLocalStorage = () => {
+  // falta un const aqui
   categoriasLocalStorage = JSON.parse(localStorage.getItem("categorias"));
   if (categoriasLocalStorage) {
     categorias = categoriasLocalStorage;
@@ -203,7 +213,9 @@ const obtenerLocalStorage = () => {
   return categorias;
 };
 
+// falta un const antes del nombre de la funcion
 mostrarListadoCategorias = () => {
+  // falta un const aqui
   htmlInicial = categorias.reduce((acc, elemento, index) => {
     return (
       acc +
@@ -232,7 +244,23 @@ const mostrarListadoOperaciones = (arrayFiltrado) => {
     seccionImagenSinResultado.style.display = "none";
     agregarMaquetadoOperaciones.style.display = "block";
     modalOperacionDetallada.style.display = "block";
+    // falta un const aqui
     htmlInicial = arrayFiltrado.reduce((acc, elemento, index) => {
+    //   en el HTML que tienen aqui siempre queda de color rojo el texto del monto, a pesar de que en el modelo
+    //   cuando es una ganancia aparece en verde, y rojo cuando es un gasto
+    //   hagan una funcion auxiliar que reciba el tipo y retorne el color que quieren: 
+
+    //   const aplicarColorAlMonto = (elemento) => {
+    //     if (elemento.tipo === "ganancia") {
+    //         return "has-text-success";
+    //     }
+    //     else {
+    //         return "has-text-danger";
+    //     }
+    // }
+
+    // y luego pueden usarla en la linea 277:
+    // class=`${aplicarColorAlMonto(elemento)} column is-2-tablet is-6-mobile has-text-weight-bold has-text-right-tablet is-size-4-mobile`>
       return (
         acc +
         `
@@ -274,6 +302,7 @@ agregarMaquetadoOperaciones.addEventListener("click", (e) => {
   if (e.target.innerHTML === "Editar" || e.target.innerHTML === "Eliminar") {
     const texto = document.querySelector("#textoOperacion").innerText;
     if (e.target.innerHTML === "Editar") {
+      // ... parece que quedó olvidada. Mejor borrar si no se usa
       //FUNCIÓN EDITAR
     }
     if (e.target.innerHTML === "Eliminar") {
@@ -296,6 +325,8 @@ const eliminarOperacion = (texto) => {
 agregarMaquetadoCategorias.addEventListener("click", (e) => {
   e.preventDefault();
 
+  // El codigo a continuacion esta muy, muy confuso, y usan muchas cosas que no vimos. 
+  // Lo dejo pasar pero por favor tengan en cuenta que escribir codigo que no entienden no les suma nada
   if (e.target.innerHTML === "Editar" || e.target.innerHTML === "Eliminar") {
     let textoCategoria = e.path[2].childNodes[1].innerText;
     if (e.target.innerHTML === "Editar") {
@@ -384,6 +415,7 @@ filtroTipo.onchange = () => {
     return operaciones.tipo === filtroTipo.value;
   });
   mostrarListadoOperaciones(operacionesFiltradasporTipo);
+  //  no dejen console log olvidados en una entrega
   console.log(filtroTipo.value);
 };
 
@@ -396,7 +428,7 @@ filtroCategoria.onchange = () => {
   });
 
   mostrarListadoOperaciones(operacionesFiltradasporCategoria);
-
+//  no dejen console log olvidados en una entrega
   console.log(filtroCategoria.value);
 };
 
@@ -410,14 +442,20 @@ filtroFecha.onchange = () => {
 
   })
  mostrarListadoOperaciones(operacionesFiltradasporTipo);
+//  no dejen console log olvidados en una entrega
   console.log(filtroFecha.value)
 
 }
 
+// No considero entregada ninguna función de aquí abajo: es código copiado sin ningún valor. 
 // ----------------------------------------------FUNCIÓN DE FILTRO "ORDENAR POR"--------------------------------
  filtroOrdenar.onchange = () => {
  
+// no dejen debugger olvidados. entienden bien lo que hace esto?
 debugger
+
+// Denme una razón creíble por la cual esta sección está tan parecida al modelo de Ada
+// que hasta copian el error de ortografía en el nombre de la función. 
   switch (filtroOrdenar.value) {
     case 'mas-recientes':
       operaciones = ordernarFecha(operaciones, 'descendente')
@@ -444,6 +482,7 @@ debugger
 }
 
 const ordernarFecha = (operaciones, orden) => {
+  // no dejen debuggers en una entrega
   debugger
   return [...operaciones].sort((a, b) => {
     const fechaA = new Date(a.fecha)
@@ -461,6 +500,7 @@ const ordernarMonto = (operaciones, orden) => {
 }
 
 const ordernarDescripcion = (operaciones, orden) => {
+  // no dejen debuggers olvidados
   debugger
   if (orden === 'ascendente') {
   
@@ -468,8 +508,8 @@ const ordernarDescripcion = (operaciones, orden) => {
   } else {
     operaciones.sort((a, b) => (a.descripcion < b.descripcion) ? 1 : -1)
   }
+
+  // ???? esto no hace nada
   return [...operaciones].sort((a, b) => {
   })
 }
-
-

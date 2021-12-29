@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <!-- El icono debe ser un archivo local de tipo ico y llamarse favicon.ico -->
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📈</text></svg>" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
@@ -80,6 +81,7 @@
                         <div class="columns">
                             <h3 class="column is-5 is-size-4 has-text-weight-bold">Filtros</h3>
                             <div class="column is-5 has-text-right is-offset-1">
+                                <!-- no pongan onclicks en el html, esto va en javascript -->
                                 <button class="button is-ghost" id="boton-ocultar" onclick="alternarFiltros()">Ocultar
                                     filtros</button>
                             </div>
@@ -88,6 +90,8 @@
 
                         <div id="filtrosGenerales">
                             <div class="field">
+                                 <!-- No dejen el atributo for vacio. Un lector de pantalla no va a poder explicarle
+                                    al usuario que elemento del form es este. El for debe ser el id del select -->
                                 <label class="label" for="">Tipo</label>
                             </div>
                             <div class="select is-fullwidth">
@@ -101,6 +105,7 @@
 
                             <!-- Categoria -->
                             <div class="field">
+                                <!-- No dejen el atributo for vacio. -->
                                 <label for="" class="label">Categoría</label>
                             </div>
                             <div class="select is-fullwidth">
@@ -117,6 +122,7 @@
 
                             <!-- Desde -->
                             <div class="field">
+                                <!-- No dejen el atributo for vacio. -->
                                 <label for="" class="label">Desde</label>
                             </div>
                             <div class="field">
@@ -125,6 +131,7 @@
 
                             <!-- Ordenar por -->
                             <div class="field">
+                                <!-- No dejen el atributo for vacio. -->
                                 <label for="" class="label">Ordenar por</label>
                             </div>
                             <div class="select is-fullwidth">
@@ -180,7 +187,10 @@
                     <!-- IMG -->
                     <div class="my-6 py-6" id="imagen-sin-resultado">
                         <figure class="container column is-offset-3 is-6">
+                                     <!-- un usuario que depende del lector de pantalla no va a tener idea de lo que es esta
+                            imagen por esta descripcion.      -->
                             <img src="https://frontend-proyecto-ahorradas.adaitw.org/imgs/wallet.svg"
+               
                                 alt="Imagen Ada contador">
                         </figure>
                         <h4 class="is-size-4 has-text-centered mt-6 mb-4 has-text-weight-semibold"> Sin resultados</h4>
@@ -196,6 +206,7 @@
                 <div class="box column is-7">
                     <div class="column is-offset-desktop">
                         <div class="mb-3">
+                            <!-- Debe haber un solo h1 por web -->
                             <h1 class="tittle is-size-2 has-text-weight-bold">Nueva operación</h1>
                         </div>
                         <div class="mb-3">
@@ -229,6 +240,7 @@
                             </select>
                         </div>
                         <div class="mb-3">
+                            <!-- No dejen el atributo for vacio. -->
                             <label for="" class="label">Fecha</label>
                         </div>
                         <div>
@@ -248,6 +260,7 @@
                 <div class="box column is-7">
                     <div class="column is-offset-desktop">
                         <div class="mb-3">
+                            <!-- debe ser un h2 -->
                             <h1 class="tittle is-size-2 has-text-weight-bold">Editar Categoria</h1>
                         </div>
                         <div class="mb-3">
@@ -263,9 +276,12 @@
             </form>
             <!--************************************ SECCIÓN CATEGORIAS **********************************-->
              <section class="columns section vista" id="seccion-categorias">
+                 <!-- este div se abre pero no se cierra nunca -->
                 <div class="container column is-8 box is-centered mt-5">
+                    <!-- Un solo h1 por web! Esto debe ser un h2-->
                     <h1 class="title is-size-2 has-text-weight-bold">Categorías</h1>
                     <div class="field">
+                        <!-- No dejen el atributo for vacio. -->
                         <label for="" class="label title">Nombre</label>
                     </div>
                     <div class="columns">
@@ -290,9 +306,11 @@
         <!--************************************ SECCIÓN REPORTES ********************************-->
         <section class="columns section vista" id="seccion-reportes">
             <div class="container column is-6 is-centered mt-5 box">
+                <!-- Debe haber un solo h1 por web -->
                 <h1 class="title is-size-2 p-2 has-text-weight-bold">Reportes</h1>
                 <div class="columns is-centered">
                     <figure class="image column is-8">
+                        <!-- no dejen el alt vacio, describan qué es la imagen -->
                         <img src="https://frontend-proyecto-ahorradas.adaitw.org/imgs/chart.svg" class="alt" alt="">
                     </figure>
                 </div>
